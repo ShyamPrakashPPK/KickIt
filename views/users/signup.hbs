@@ -1,0 +1,199 @@
+<script></script>
+
+<body>
+    <div>
+        <div>
+            <div class="row gx-5">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                    <section class="vh-100 bg-image"
+                        style="background-image: url('https://mdbcdn.b-cdn.net/img/Photos/new-templates/search-box/img4.webp');">
+                        <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+                            <div class="container">
+                                <div class="row d-flex justify-content-center align-items-center h-100">
+                                    <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+                                        <div class="card" style="border-radius: 15px;">
+                                            <div class="card-body">
+                                                <h2 class="text-uppercase text-center mb-5">Create an account</h2>
+
+                                                <form action="/signup" method="post" role="form">
+
+                                                    <div class="form-outline mb-4">
+                                                        <span id="name-error" class="disappear"></span>
+                                                        <input name="userName" type="text" id="name"
+                                                            class="form-control form-control-lg"
+                                                            onkeyup="validateName()" />
+                                                        <label class="form-label" for="form3Example1cg">Your
+                                                            Name</label>
+                                                    </div>
+
+                                                    <div class="form-outline mb-4">
+                                                        <span id="email-error" class="disappear"></span>
+                                                        <input name="userEmail" type="email" id="email"
+                                                            class="form-control form-control-lg"
+                                                            onkeyup=" validateEmail()" />
+                                                        <label class="form-label" for="form3Example3cg">Your
+                                                            Email</label>
+                                                    </div>
+
+                                                    <div class="form-outline mb-4">
+                                                        <span id="phone-error" class="disappear"></span>
+                                                        <input name="userPhone" type="number" id="phone"
+                                                            class="form-control form-control-lg"
+                                                            onkeyup="validatePhone()" />
+                                                        <label class="form-label" for="form3Example3cg">Your Phone
+                                                            no.</label>
+                                                    </div>
+
+                                                    <div class="form-outline mb-4">
+                                                        <span id="pw1-error" class="disappear"></span>
+                                                        <input name="userPassword" type="password" id="password1"
+                                                            onkeyup="validatePassword()"
+                                                            class="form-control form-control-lg" />
+                                                        <label class="form-label" for="form3Example4cg">Password</label>
+                                                    </div>
+
+                                                    <div class="form-outline mb-4">
+                                                        <span id="confirm-error" class="disappear"></span>
+                                                        <input type="password" id="password2"
+                                                            class="form-control form-control-lg"
+                                                            onkeyup="validateConfirmPwd()" />
+                                                        <label class="form-label" for="form3Example4cdg">confirm
+                                                            password</label>
+                                                    </div>
+
+
+                                                    <input type="checkbox" onclick="myFunction()"><label for="">Show
+                                                        Password</label>
+
+                                                    <div class="form-check d-flex justify-content-center mb-5">
+                                                        <input class="form-check-input me-2" type="checkbox" value=""
+                                                            id="form2Example3cg" />
+                                                        <label class="form-check-label" for="form2Example3g">
+                                                            I agree all statements in <a href="#!"
+                                                                class="text-body"><u>Terms of
+                                                                    service</u></a>
+                                                        </label>
+                                                    </div>
+
+                                                    <div class="d-flex justify-content-center">
+                                                        <button type="submit" onclick="return validateForm()" 
+                                                            class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Register</button>
+                                                    </div>
+
+                                                    <br><span id="submit-error"></span>
+                                                    {{#if emailError}}
+                                                    <span class="text-danger pl-5 disappear1">{{'emailError'}}</span>
+                                                    {{/if}}
+                                                    <br>
+
+                                                    <p class="text-center text-muted mt-5 mb-0">already have an account?
+                                                        <a href="/login" class="fw-bold text-body"><u>Login here</u></a>
+                                                    </p>
+
+                                                  
+
+                                                </form>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <footer class="footer_area">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12">
+                                    <div class="company__info">
+                                        <h3 class="f-title">contact info</h3>
+                                        <ul>
+                                            <li>Add: 734 Riverwood Drive, Suite 245 Cottonwood </li>
+                                            <li>Beverly Hill, Melbourne, USA.</li>
+                                            <li>Email: <a href="/cdn-cgi/l/email-protection" class="__cf_email__"
+                                                    data-cfemail="34775b5a40555740745146515a405c5159511a575b59">[email&#160;protected]</a>
+                                            </li>
+                                            <li>Fax: (+100) 123 456 7890 - (+100) 123 456 7891</li>
+                                        </ul>
+                                        <div class="social__media mb-30">
+                                            <h3 class="f-title">FOLLOW US ON</h3>
+                                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                            <a href="#"><i class="fab fa-twitter"></i></a>
+                                            <a href="#"><i class="fab fa-instagram"></i></a>
+                                            <a href="#"><i class="fab fa-google-plus-g"></i></a>
+                                            <a href="#"><i class="fab fa-dribbble"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-2 col-lg-6 col-md-6 col-sm-12">
+                                    <div class="company__info">
+                                        <h3 class="f-title">Get Help</h3>
+                                        <ul>
+                                            <li><a href="#">Contact Us</a></li>
+                                            <li><a href="#">Delivery Information</a></li>
+                                            <li><a href="#">Sale Terms & Conditions</a></li>
+                                            <li><a href="#">Privacy Notice</a></li>
+                                            <li><a href="#">Shopping FAQs</a></li>
+                                            <li><a href="#">Returns & Refundss</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-xl-2 col-lg-6 col-md-6 col-sm-12">
+                                    <div class="company__info">
+                                        <h3 class="f-title">Popular categories</h3>
+                                        <ul>
+                                            <li><a href="#">Sneaker</a></li>
+                                            <li><a href="#">Clothing & Stools</a></li>
+                                            <li><a href="#">Helmet for Women’s</a></li>
+                                            <li><a href="#">Basketball</a></li>
+                                            <li><a href="#">Mens Running</a></li>
+                                            <li><a href="#">Footwear</a></li>
+                                            <li><a href="#">Outerwears</a></li>
+                                            <li><a href="#">Men’s</a></li>
+                                            <li><a href="#">Kids & Young</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-xl-3 offset-xl-1 col-lg-6 col-md-6 col-sm-12">
+                                    <div class="company__info">
+                                        <h3 class="f-title">get in touch</h3>
+                                        <p>Sign up for all the news about our latest arrivals and<br>
+                                            get an exclusive early access shopping. Join <br>
+                                            <span>60.000+ Subscribers</span> and get a new discount coupon<br> on every
+                                            Saturday.
+                                        </p>
+                                        <div class="subscribe pt-20">
+                                            <form action="#">
+                                                <input type="email" placeholder="Enter your email here..." />
+                                                <button>Subscribe</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="footer__bottom pb-10 mt-60">
+                                <div class="row">
+                                    <div class="col-xl-5 col-lg-5 col-md-6 col-sm-12 ">
+                                        <p>Copyright © <span>Gota Store</span> All Rights Reserved. Powered by <span><a
+                                                    href="themepure.net">theme_pure</a></span></p>
+                                    </div>
+                                    <div class="col-xl-5 offset-xl-2 col-lg-4 col-md-6 col-sm-12">
+                                        <div class="footer-menu">
+                                            <ul class="text-end">
+                                                <li><a href="#">Site Map</a></li>
+                                                <li><a href="#">Search Terms</a></li>
+                                                <li><a href="#">Advanced Search </a></li>
+                                                <li><a href="#">Contact Us</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </footer>
+                    <!-- footer area end -->
+
+
+
+</body>

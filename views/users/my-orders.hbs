@@ -1,0 +1,70 @@
+<div class="f_cart_area pt-110 mb-100">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-12">
+                <div class="cart_table">
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th scope="col">Date Of Order</th>
+                                <th scope="col">Deliver Address</th>
+                                <th scope="col">Total</th>
+                                <th scope="col">Payment Method</th>
+                                <th scope="col">Order Status</th>
+                                <th scope="col">View Order</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each orders}}
+                            <tr>
+
+
+                                <td>{{this.date}}</td>
+
+
+                                <td>{{this.deliveryAddress.HouseNo}},{{this.deliveryAddress.Street}},{{this.deliveryAddress.TownCity}}<br>{{this.deliveryAddress.State}},{{this.deliveyAddress.Country}}
+
+                                </td>
+
+
+                                <td>
+                                    <span i>{{this.total}}</span>
+
+                                </td>
+
+                                <td>
+                                    <span i>{{this.paymentMethod}}</span>
+                                </td>
+
+                                <td>
+                                    <span i>{{this.orderStatus}}</span>
+                                </td>
+
+                                <td>
+
+                                    <a href="/order-details?id={{this._id}}" class="btn btn-primary ">View</a></a>
+                                </td>
+                            </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination justify-content-center">
+                            <li class="page-item disabled">
+                                <a class="page-link" href="#" tabindex="-1">Previous</a>
+                            </li>
+                            <li class="page-item"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item">
+                                <a class="page-link" href="#">Next</a>
+                            </li>
+                        </ul>
+                    </nav>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

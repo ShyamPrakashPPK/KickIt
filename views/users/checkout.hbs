@@ -1,0 +1,486 @@
+<body>
+    <div class="checkout_area pt-80">
+        <div class="container">
+
+            <form action="" method="post" id="checkout-form">
+                <div class="row">
+                    <div class="card mt-5 mb-5">
+                        <div class="card-body">
+                            <h5 class="card-title">Saved Address</h5>
+                            <!-- Address Accordion Start -->
+                            <div class="accordion accordion-flush" id="accordionFlushExample">
+                                {{#each address}}
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="flush-headingOne">
+                                        <button class="accordion-button collapsed"
+                                            onclick="getAddress({{this.Address.addressId}})" id="address" type="button"
+                                            data-bs-toggle="collapse"
+                                            data-bs-target="#flush-collapse{{this.Address.addressId}}"
+                                            aria-expanded="false"
+                                            aria-controls="flush-collapse{{this.Address.addressId}}">
+                                            {{this.Address.Name}}
+                                        </button>
+                                    </h2>
+                                    <div id="flush-collapse{{this.Address.addressId}}"
+                                        class="accordion-collapse collapse" aria-labelledby="flush-headingOne"
+                                        data-bs-parent="#accordionFlushExample" style="">
+                                        <div class="accordion-body">
+                                            To:{{this.Address.Name}}<br>{{this.Address.HouseNo}},{{this.Address.Street}}<br>
+                                            {{this.Address.TownCity}}{{this.Address.PostCode}},{{this.Address.State}},{{this.Address.Country}}<br>
+                                            {{this.Address.Mobile}}</div>
+                                    </div>
+                                </div>
+                                {{/each}}
+                            </div>
+                            {{!-- Address accordion End --}}
+
+                        </div>
+                    </div>
+                    <div class="col-xl-7 col-lg-7 col-md-12">
+                        <div class="checkout_form mb-100">
+                            {{!-- <form action="" id="checkout-form"> --}}
+                                <div class="row mb-30">
+                                    <div class="col-xl-12 col-lg-12 col-md-12">
+                                        <div class="checkout__wrap">
+                                            <label>Name<span>*</span></label>
+                                            <input type="text" id="name" name="Name" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mb-30">
+                                    <div class="col-xl-6 col-lg-6 col-md-6">
+                                        <div class="checkout__wrap">
+                                            <label>House Number<span>*</span></label>
+                                            <input type="text" id="house" name="HouseNo" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-6 col-lg-6 col-md-6">
+                                        <div class="checkout__wrap">
+                                            <label>Street<span>*</span></label>
+                                            <input type="text" id="street" name="Street" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mb-30">
+                                    <div class="col-xl-6 col-lg-6 col-md-6">
+                                        <div class="checkout__wrap">
+                                            <label>Town/City<span>*</span></label>
+                                            <input type="text" id="town" name="TownCity" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-6 col-lg-6 col-md-6">
+                                        <div class="checkout__wrap">
+                                            <label>State<span>*</span></label>
+                                            <input type="text" id="state" name="State" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mb-30">
+                                    <div class="col-xl-6 col-lg-6 col-md-6">
+                                        <div class="checkout__wrap">
+                                            <label>Country<span>*</span></label>
+                                            <input type="text" id="country" name="Country" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-6 col-lg-6 col-md-6">
+                                        <div class="checkout__wrap">
+                                            <label>PostCode<span>*</span></label>
+                                            <input type="text" id="pin" name="PostCode" required>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="checkout__wrap">
+                                    <label>Mobile Number <span>*</span></label>
+                                    <input class="mb-20" type="text" id="mobile" name="Mobile" required
+                                        placeholder="Mobile Number">
+                                </div>
+
+                                {{!--
+                            </form> --}}
+                        </div>
+                    </div>
+                    <div class="col-xl-5 col-lg-5 col-md-12">
+                        <div class="cart__acount ml-50">
+                            <div>
+                                <input name="couponApplied" value="0" id="couponApplied" type="text" hidden>
+                            </div>
+                            <h5>Have a coupon?</h5>
+                            <div class="row mb-30">
+                                <div class="col-xl-12 col-lg-12 col-md-12">
+                                    <div class="checkout__wrap">
+                                        <p>Enter your coupon code if you have one.
+                                            <span class="text-danger font-weight-bold" id="error"></span>
+                                            <span class="text-success font-weight-bold" id="cname"></span>
+                                        </p>
+                                        <form>
+                                            <input type="text" class="border " value="" id="couponDiscount"
+                                                name="couponCode" style="text-transform:uppercase" placeholder="CODE"
+                                                maxlength="8" oninput="this.value = this.value.toUpperCase()">
+                                            <button onclick="return applyCoupon()">Apply Coupon</button>
+                                            <button onclick="return removeCoupon()" id="remove">Remove
+                                                Coupon</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <h5>Your order</h5>
+                            <table>
+                                <tr class="first-child-2">
+                                    <td>products</td>
+                                    <td>{{#each product}}{{this.product.prodName}} <span>×
+                                            {{this.quantity}}</span><br>{{/each}}</td>
+                                </tr>
+                                <tr class="first-child-2">
+                                    <td>Subtotal</td>
+                                    <td class="lightbluee" id="subTotal">{{total2}}</td>
+                                </tr>
+                                <tr class="first-child-2">
+
+                                    <td>Apply Coupon
+                                    <td class="text-success" id="discount">0 </td>
+                                    </td>
+                                    <li class="text-success" id="offerDetail"></li>
+                                    </ul>
+                                <tr class="first-child-2">
+                                    <td>Shipping</td>
+                                    <td>Free shipping for everyone </td>
+                                </tr>
+                                <tr class="first-child lastchild">
+                                    <td>Total</td>
+                                    <td class="lightbluee" id="total">{{total2}}</td>
+
+                                </tr>
+                            </table>
+
+                            <div class="checkout__accordion mt-30">
+                                <div class="accordion" id="accordionExample">
+
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="headingTwo">
+                                            <button class="accordion-button collapsed" value="COD" name="payment-method"
+                                                type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo"
+                                                aria-expanded="false" aria-controls="collapseTwo">
+                                                <input class="mr-5 mt-1" type="radio" name="payment-method"
+                                                    value="COD">Cash on delivery
+                                            </button>
+                                        </h2>
+                                        <div id="collapseTwo" class="accordion-collapse collapse"
+                                            aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                                            <div class="accordion-body">
+                                                Pay with cash upon delivery.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="headingThree">
+                                            <button class="accordion-button collapsed" value="ONLINE"
+                                                name="payment-method" type="button" data-bs-toggle="collapse"
+                                                data-bs-target="#collapseThree" aria-expanded="false"
+                                                aria-controls="collapseThree">
+                                                <input class="mr-5 mt-1" type="radio" name="payment-method"
+                                                    value="ONLINE">Online
+                                                Payment
+                                            </button>
+                                        </h2>
+                                        <div id="collapseThree" class="accordion-collapse collapse"
+                                            aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                                            <div class="accordion-body">
+                                                <img style="height: 20px; width:auto;"
+                                                    src="/assets/img/logo/1896px-Razorpay_logo.png" alt="">
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header">
+
+                                            <button class="accordion-button collapsed" value="PAYPAL"
+                                                name="payment-method" type="button" data-bs-toggle="collapse"
+                                                data-bs-target="#collapsefour" aria-expanded="false"
+                                                aria-controls="collapsefour">
+                                                <input class="mr-5 mt-1" type="radio" name="payment-method"
+                                                    value="PAYPAL">Paypal
+                                            </button>
+                                        </h2>
+                                        <div id="collapsefour" class="accordion-collapse collapse"
+                                            aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                                            <div class="accordion-body">
+                                                <img style="height: 20px; width:auto;" src="/assets/img/logo/PayPal.png"
+                                                    alt="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="terms pt-50 pb-20">
+                                <p>Your personal data will be used to process your order, support your experience
+                                    throughout this website, and for other purposes described in our privacy policy</p>
+                                <div class="check_term">
+                                    <input required type="checkbox">
+                                    <p>I have read and agree to the website terms and conditions <span>*</span></p>
+                                </div>
+                                <div class="order-button">
+                                    <button type="submit">place order</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!--Paypal integration-->
+    <!-- Sample PayPal credentials (client-id) are included -->
+    <script src="https://www.paypal.com/sdk/js?client-id=test&currency=USD&intent=capture"
+        data-sdk-integration-source="integrationbuilder"></script>
+    <script>
+        const fundingSources = [
+            paypal.FUNDING.PAYPAL
+        ]
+        for (const fundingSource of fundingSources) {
+            const paypalButtonsComponent = paypal.Buttons({
+                fundingSource: fundingSource,
+
+                // optional styling for buttons
+                // https://developer.paypal.com/docs/checkout/standard/customize/buttons-style-guide/
+                style: {
+                    shape: 'rect',
+                    height: 40,
+                },
+                // set up the transaction
+                createOrder: (data, actions) => {
+                    // pass in any options from the v2 orders create call:
+                    // https://developer.paypal.com/api/orders/v2/#orders-create-request-body
+                    const createOrderPayload = {
+                        purchase_units: [
+                            {
+                                amount: {
+                                    value: '88.44',
+                                },
+                            },
+                        ],
+                    }
+                    return actions.order.create(createOrderPayload)
+                },
+                // finalize the transaction
+                onApprove: (data, actions) => {
+                    const captureOrderHandler = (details) => {
+                        const payerName = details.payer.name.given_name
+                        console.log('Transaction completed!')
+                    }
+                    return actions.order.capture().then(captureOrderHandler)
+                },
+                // handle unrecoverable errors
+                onError: (err) => {
+                    console.error(
+                        'An error prevented the buyer from checking out with PayPal',
+                    )
+                },
+            })
+            if (paypalButtonsComponent.isEligible()) {
+                paypalButtonsComponent
+                    .render('#paypal-button-container')
+                    .catch((err) => {
+                        console.error('PayPal Buttons failed to render')
+                    })
+            } else {
+                console.log('The funding source is ineligible')
+            }
+        }
+    </script>
+
+    <!--Razorpay library-->
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <script>
+        $("#checkout-form").submit((e) => {
+            e.preventDefault()
+            $.ajax({
+                url: '/place-order',
+                method: 'post',
+                data: $('#checkout-form').serialize(),
+                success: (response) => {
+                    if (response.codSuccess) {
+                        location.href = '/my-orders'
+                    }else if(response.payPal){
+                        console.log(response)
+                        location.replace(response.linkto)
+                    }
+                    
+                     else {
+                        razorPayment(response)
+                    }
+                }
+            })
+        })
+
+        function razorPayment(order) {
+
+            console.log('razor pay here---------------------------')
+            var options = {
+                "key": "rzp_test_NZjvC9tizws6up", // Enter the Key ID generated from the Dashboard
+                "amount": order.amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+                "currency": "INR",
+                "name": "KickIt",
+                "description": "Test Transaction",
+                "image": "https://example.com/your_logo",
+                "order_id": order.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+                "handler": function (response) {
+                    // alert(response.razorpay_payment_id);
+                    //alert(response.razorpay_order_id);
+                    //alert(response.razorpay_signature);
+
+                    verifyPayment(response, order)
+                },
+                "prefill": {
+                    "name": "Gaurav Kumar",
+                    "email": "gaurav.kumar@example.com",
+                    "contact": "9999999999"
+                },
+                "notes": {
+                    "address": "Razorpay Corporate Office"
+                },
+                "theme": {
+                    "color": "#3399cc"
+                }
+            };
+            var rzp1 = new Razorpay(options);
+            rzp1.open();
+        };
+
+
+
+        function verifyPayment(payment, order) {
+            $.ajax({
+                url: '/verify-payment',
+                data: {
+                    payment,
+                    order
+                },
+                method: 'post',
+                success: (response) => {
+                    if (response.status) {
+
+                        location.href = '/my-orders'
+
+                    } else {
+
+                        alert("payment failed")
+                    }
+                }
+            })
+        }
+    </script>
+
+    {{!-- Address loading --}}
+    <script>
+        function getAddress(id) {
+            console.log(id, "address id")
+            $.ajax({
+                url: '/get-address',
+                data: {
+                    id
+                },
+                method: 'post',
+                success: (response) => {
+                    console.log(response.address.Address.Name, "after response")
+                    document.getElementById('name').value = response.address.Address.Name,
+                        document.getElementById('house').value = response.address.Address.HouseNo,
+                        document.getElementById('street').value = response.address.Address.Street,
+                        document.getElementById('town').value = response.address.Address.TownCity,
+                        document.getElementById('state').value = response.address.Address.State,
+                        document.getElementById('country').value = response.address.Address.Country,
+                        document.getElementById('pin').value = response.address.Address.PostCode,
+                        document.getElementById('mobile').value = response.address.Address.Mobile
+                }
+            })
+        }
+    </script>
+
+    {{!-- coupons apply --}}
+    <script>
+        function applyCoupon() {
+            let couponCode = document.getElementById('couponDiscount').value
+            console.log(couponCode, "coupon here")
+            $.ajax({
+                url: "/get-coupon-discount/" + couponCode,
+                method: 'post',
+                success: (response) => {
+                    if (response.status) {
+                        let discount
+                        let total
+                        let obj = response.coupon
+                        console.log(obj.minSpend, "from hbs")
+                        let subtotal = (document.getElementById('subTotal').innerHTML)
+                        console.log(subtotal, "sub total from hbs ")
+                        if (subtotal >= obj.minSpend) {
+                            discount = subtotal * obj.couponDiscount / 100
+                            if (discount > obj.maxAmount) {    /*((subtotal + discount) > obj.maxAmount)*/
+                                discount = obj.maxAmount
+                            }
+                            total = (subtotal - discount)
+                            document.getElementById('error').innerHTML = obj.couponDescription  //change status
+                            document.getElementById('offerDetail').innerHTML = obj.couponDiscount + "% up to " + obj.maxAmount + " on min Spend " + obj.minSpend
+                            document.getElementById('discount').innerHTML = discount
+                            document.getElementById('couponApplied').value = discount
+                            document.getElementById('total').innerHTML = total
+                            document.getElementById('remove').style.display = "block"
+                            document.getElementById('add').style.display = "none"
+
+                            Swal.fire({
+                                icon: 'success',
+                                title: obj.couponDescription,
+                                text: obj.couponDiscount + "% up to " + obj.maxAmount + " on min Spend " + obj.minSpend,
+                            })
+
+                        } else {
+                            Swal.fire({
+                                icon: 'warning',
+                                title: "Coupon not applied",
+                                text: "You need to spend minimum " + obj.minSpend + " to avail this offer",
+                            })
+                        }
+                    } else {
+                        Swal.fire({
+                            icon: 'warning',
+                            title: response.err,
+                        })
+
+                        document.getElementById('error').innerHTML = response.err
+                    }
+                }
+            })
+        }
+    </script>
+
+    {{!-- coupon remove --}}
+    <script>
+        function removeCoupon() {
+            Swal.fire({
+                icon: 'success',
+                title: "Removed  ",
+                text: "Coupon Removed Successfully ",
+                showConfirmButton: false,
+                timer: 1000
+            })
+          
+
+            document.getElementById('couponDiscount').value = ""
+            document.getElementById('error').innerHTML = ""
+            document.getElementById('offerDetail').innerHTML = ""
+            document.getElementById('discount').innerHTML = "Coupon Removed"
+            document.getElementById('couponApplied').value = 0
+            document.getElementById('total').innerHTML = parseInt(document.getElementById('subTotal').innerHTML)
+            document.getElementById('remove').style.display = "none"
+            document.getElementById('add').style.display = "block"
+
+        }
+    </script>
+
+
+    <form action="post"><input type="hidden" name="total" id="total"></form>
+
+</body>

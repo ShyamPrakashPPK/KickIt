@@ -1,0 +1,83 @@
+<body>
+    <main id="main" class="main">
+
+        <div class="pagetitle">
+            <h1>Coupon Tables</h1>
+            <nav>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                    <li class="breadcrumb-item">Categories</li>
+                    <li class="breadcrumb-item active">All Coupon</li>
+                </ol>
+            </nav>
+        </div><!-- End Page Title -->
+
+        <section class="section">
+            <div class="row">
+                <div class="col-lg-12">
+
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Coupon</h5>
+
+                            <!-- Default Table -->
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">Coupon Code</th>
+                                        <th scope="col">Coupon Discount</th>
+                                        <th scope="col">Expiry Date</th>
+                                        <th scope="col">Status </th>
+                                        <th scope="col">Action </th>
+
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {{#each coupon}}
+                                    <tr>
+                                        <th scope="row">{{inc @index}}</th>
+                                        <td>{{this.couponCode}}</td>
+                                        <td>{{this.couponDiscount}}
+                                        </td>
+                                        <td>{{this.expiryDate}}</td>
+                                        <td>{{#if couponBlocked}}
+                                            <span class="badge bg-danger"><i class="bi bi-exclamation-octagon me-1"></i>
+                                                Blocked</span>
+                                            {{else}}
+                                            <span class="badge bg-success"><i class="bi bi-check-circle me-1"></i>
+                                                Active</span>
+                                            {{/if}}
+                                        </td>
+                                        <td>{{#if couponBlocked}}
+                                            <a href="/admin/unBlockCoupon?id={{this._id}}" class="badge bg-success"><i
+                                                    class="bi bi-check-circle me-1"></i>
+                                                Unblock</a>
+                                            {{else}}
+                                            <a href="/admin/blockCoupon?id={{this._id}}" class="badge bg-danger"><i
+                                                    class="bi bi-exclamation-octagon me-1"></i>
+                                                Block</a>
+                                            {{/if}}
+                                        </td>
+
+                                    </tr>
+                                    {{/each}}
+
+                                </tbody>
+                            </table>
+                            <!-- End Default Table Example -->
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </section>
+
+    </main><!-- End #main -->
+
+
+
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+            class="bi bi-arrow-up-short"></i></a>

@@ -1,0 +1,400 @@
+<!-- shop page start -->
+<div class="shop-page pt-85">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-3 col-lg-4 col-md-12">
+                <div class="sidebar">
+                    <div class="product-widget">
+                        <h3 class="widget-title mb-30">Product categories</h3>
+                        <ul class="product-categories">
+                            {{#each categories}}
+                            <li><a href="shop.html">{{this.categoryName}} <span>(
+                                        {{this.categoryDiscount}}%off)</span></a></li>
+                            {{/each}}
+                        </ul>
+                    </div>
+
+
+
+                </div>
+            </div>
+            <div class="col-xl-9 col-lg-9 col-md-9 col-sm-12">
+                <div class="shop-top-bar position-relative">
+                    <div class="showing-result">
+                        <p> Showing all results</p>
+                    </div>
+                    <div class="shop-tab">
+                        <nav>
+                            <div class="nav nav-tabs shop-tabs" id="nav-tab" role="tablist">
+                                <button>
+                                    <span>views</span>
+                                </button>
+                                <button class="nav-link" id="nav-home-tab" data-bs-toggle="tab"
+                                    data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home"
+                                    aria-selected="true">
+                                    <img src="./assets/img/essential/i2.svg" alt="">
+                                </button>
+                                <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab"
+                                    data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile"
+                                    aria-selected="false">
+                                    <img src="./assets/img/essential/i3.svg" alt="">
+                                </button>
+                                <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab"
+                                    data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact"
+                                    aria-selected="false">
+                                    <img src="./assets/img/essential/i4.svg" alt="">
+                                </button>
+                                <button class="nav-link active " id="nav-contact-tab2" data-bs-toggle="tab"
+                                    data-bs-target="#nav-list" type="button" role="tab" aria-controls="nav-contact"
+                                    aria-selected="false">
+                                    <img src="./assets/img/essential/list.svg" alt="">
+                                </button>
+                            </div>
+                        </nav>
+                    </div>
+
+                </div>
+                <div class="shop-page-product pt-50 pb-100">
+                    <div class="row">
+                        <div class="col-xl-12 col-lg-12 col-md-12">
+                            <div class="tab-content" id="nav-tabContent">
+                                <div class="tab-pane fade " id="nav-home" role="tabpanel"
+                                    aria-labelledby="nav-home-tab">
+                                    <div class="row">
+                                        {{#each product}}
+                                        <div class="col-xl-6">
+                                            <div class="product product-4">
+                                                <div class="product__thumb">
+                                                    <a href="/single?id={{this._id}}">
+                                                        <img class="product-primary"
+                                                            src="/product-images1/{{this._id}}.jpg" alt="product_image">
+                                                        <img class="product-secondary"
+                                                            src="/product-images2/{{this._id}}.jpg" alt="product_image">
+                                                    </a>
+                                                    <!-- <div class="product__update">
+                                                            <a class="#">new</a>
+                                                        </div> -->
+                                                    <div class="product-info mb-10">
+                                                        <div class="product_category">
+                                                            <span>{{this.prodCategory}}</span>
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="product__name">
+                                                        <h4><a href="/single?id={{this._id}}">{{this.prodName}}</a></h4>
+                                                        <div class="pro-price">
+                                                            <p class="p-absoulute pr-1"><span>₹</span>{{this.prodPrice}}
+                                                                <span>₹</span><s>{{this.prodMRP}}</s>
+                                                            </p>
+                                                            <div onclick="addToCart('{{this._id}}')">
+                                                                <a class="p-absoulute pr-2" href="#">add to cart</a>
+                                                            </div>
+                                                            {{!-- <button onclick="addToCart('{{this._id}}')"
+                                                                class="p-absoulute pr-2">Add to cart</button> --}}
+
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="product__action">
+                                                        <div class="inner__action">
+                                                            <div class="wishlist" onclick="wishlist('{{this._id}}')">
+                                                                <a><i class="fal fa-heart"></i></a>
+                                                            </div>
+                                                            <div class="view">
+                                                                <a><i class="fal fa-eye"></i></a>
+                                                            </div>
+                                                            <div class="layer">
+                                                                <a><i class="fal fa-layer-group"></i></a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {{/each}}
+
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="nav-profile" role="tabpanel"
+                                    aria-labelledby="nav-profile-tab">
+                                    <div class="row">
+                                        {{#each product}}
+                                        <div class="col-xl-4">
+                                            <div class="product product-4">
+                                                <div class="product__thumb">
+                                                    <a href="/single?id={{this._id}}">
+                                                        <img class="product-primary"
+                                                            src="/product-images1/{{this._id}}.jpg" alt="product_image">
+                                                        <img class="product-secondary"
+                                                            src="/product-images2/{{this._id}}.jpg" alt="product_image">
+                                                    </a>
+                                                    <!-- <div class="product__update">
+                                                            <a class="#">new</a>
+                                                        </div> -->
+                                                    <div class="product-info mb-10">
+                                                        <div class="product_category">
+                                                            <span>{{this.prodCategory}}</span>
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="product__name">
+                                                        <h4><a href="/single?id={{this._id}}">{{this.prodName}}</a></h4>
+                                                        <div class="pro-price">
+                                                            <p class="p-absoulute pr-1"><span>₹</span>{{this.prodPrice}}
+                                                                <span>₹</span><s>{{this.prodMRP}}</s>
+                                                            </p>
+
+                                                            <div onclick="addToCart('{{this._id}}')">
+                                                                <a class="p-absoulute pr-2" href="#">add to cart</a>
+                                                            </div>
+                                                            {{!-- <button onclick="addToCart('{{this._id}}')"
+                                                                class="p-absoulute pr-2">Add to cart</button> --}}
+                                                        </div>
+                                                    </div>
+                                                    <div class="product__action">
+                                                        <div class="inner__action">
+                                                            <div class="wishlist" onclick="wishlist('{{this._id}}')">
+                                                                <a><i class="fal fa-heart"></i></a>
+                                                            </div>
+                                                            <div class="view">
+                                                                <a><i class="fal fa-eye"></i></a>
+                                                            </div>
+                                                            <div class="layer">
+                                                                <a><i class="fal fa-layer-group"></i></a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {{/each}}
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="nav-contact" role="tabpanel"
+                                    aria-labelledby="nav-contact-tab">
+                                    <div class="row">
+                                        {{#each product}}
+                                        <div class="col-xl-3">
+                                            <div class="product product-3">
+                                                <div class="product__thumb">
+                                                    <a href="/single?id={{this._id}}">
+                                                        <img class="product-primary"
+                                                            src="/product-images1/{{this._id}}.jpg" alt="product_image">
+                                                        <img class="product-secondary"
+                                                            src="/product-images2/{{this._id}}.jpg" alt="product_image">
+                                                    </a>
+                                                    <!-- <div class="product__update">
+                                                            <a class="#">new</a>
+                                                        </div> -->
+                                                    <div class="product-info mb-10">
+                                                        <div class="product_category">
+                                                            <span>{{this.prodCategory}}</span>
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="product__name">
+                                                        <h4><a href="/single?id={{this._id}}">{{this.prodName}}</a></h4>
+                                                        <div class="pro-price">
+                                                            <p class="p-absoulute pr-1"><span>₹</span>{{this.prodPrice}}
+                                                                <span>₹</span><s>{{this.prodMRP}}</s>
+                                                            </p>
+                                                            <div onclick="addToCart('{{this._id}}')">
+                                                                <a class="p-absoulute pr-2" href="#">add to cart</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="product__action">
+                                                        <div class="inner__action">
+                                                            <div class="wishlist" onclick="wishlist('{{this._id}}')">
+                                                                <a><i class="fal fa-heart"></i></a>
+                                                            </div>
+                                                            <div class="view">
+                                                                <a><i class="fal fa-eye"></i></a>
+                                                            </div>
+                                                            <div class="layer">
+                                                                <a><i class="fal fa-layer-group"></i></a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {{/each}}
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade show active" id="nav-list" role="tabpanel"
+                                    aria-labelledby="nav-contact-tab">
+                                    {{#each product}}
+                                    <div class="border-top">
+                                        <div class="row">
+                                            <div class="col-xl-4 col-lg-4 col-md-4">
+                                                <div class="list-product">
+                                                    <div class="list__thumb">
+                                                        <a href="/single?id={{this._id}}">
+                                                            <img src="/product-images1/{{this._id}}.jpg" alt=""></a>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-8 col-lg-8 col-md-8">
+                                                <div class="list__content">
+                                                    <div class="viewcontent">
+                                                        <div class="viewcontent__header">
+                                                            <a href="/single?id={{this._id}}">
+                                                                <h2 class="mb-10">{{this.prodName}}</h2>
+                                                            </a>
+                                                        </div>
+
+                                                        <div class="viewcontent__price">
+                                                            <h4><span>₹</span><s>{{this.prodMRP}}</s></h4>
+                                                            <h4><span>₹{{this.prodPrice}}</span></h4>
+                                                        </div>
+                                                        <div class="view__para">
+                                                            <p>{{this.prodDescription}}</p>
+                                                        </div>
+                                                        <div class="list-actions pt-20">
+                                                            <div class="viewcontent__action">
+                                                                <div onclick="addToCart('{{this._id}}')">
+                                                                    <span><a href="#">add to cart</a></span>
+                                                                </div>
+                                                                <a onclick="wishlist('{{this._id}}')"><i
+                                                                        class="fal fa-heart mt-5"></i></a>
+                                                                <a class="ml-5"><i class="fal fa-layer-group"></i></a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {{/each}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- shop page end -->
+
+<!-- search area  -->
+<div class="search_area">
+    <div class="search_close">
+        <span><i class="fal fa-times"></i></span>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-12">
+                <div class="search-wrapper text-center">
+                    <h2>search</h2>
+                    <div class="search-filtering pt-30">
+                        <div class="search_tab">
+                            <ul class="nav nav-tabs justify-content-center mb-55" id="ff" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link active" id="home-tab2ff" data-bs-toggle="tab"
+                                        data-bs-target="#home2" type="button" role="tab" aria-selected="true">All
+                                        categories</button>
+                                </li>
+                                {{#each categories}}
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="profile-tab2f" data-bs-toggle="tab"
+                                        data-bs-target="#profile2" type="button" role="tab"
+                                        aria-selected="false">{{this.categoryName}}</button>
+                                </li>
+                                {{/each}}
+                          
+                            </ul>
+                            <div class="tab-content" id="myTabContent2f">
+                                <div class="tab-pane fade show active" id="home2" role="tabpanel">
+
+                                </div>
+                                <div class="tab-pane fade" id="profile2" role="tabpanel">
+
+                                </div>
+                                <div class="tab-pane fade" id="contact2" role="tabpanel">
+
+                                </div>
+                                <div class="tab-pane fade" id="sportswear" role="tabpanel">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="main_search">
+                        <form action="#">
+                            <input type="text" name="search" placeholder="search products">
+                            <button class="m-search"><i class="fal fa-search d-sm-none d-md-block"></i></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- popup area start -->
+{{!-- <div class="overlay"></div>
+<div class="product-popup">
+    <div class="view-background">
+        <div class="row">
+            <div class="col-xl-5 col-lg-5 col-md-5">
+                <div class="quickview">
+                    <div class="quickview__thumb">
+                        <img src="./assets/img/quick_view/25.jpg" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-7 col-lg-7 col-md-7">
+                <div class="viewcontent">
+                    <div class="viewcontent__header">
+                        <a href="single.html">
+                            <h2>Brown Leather Bags</h2>
+                        </a> <a class="view_close product-p-close" href="javascript:void(0)"><i
+                                class="fal fa-times-circle"></i></a>
+                    </div>
+                    <div class="viewcontent__rating">
+                        <i class="fal fa-star ratingcolor"></i>
+                        <i class="fal fa-star ratingcolor"></i>
+                        <i class="fal fa-star ratingcolor"></i>
+                        <i class="fal fa-star"></i>
+                    </div>
+                    <div class="viewcontent__price">
+                        <h4><span>$</span>99.00</h4>
+                    </div>
+                    <div class="viewcontent__stock">
+                        <h4>Available :<span> In stock</span></h4>
+                    </div>
+                    <div class="viewcontent__details">
+                        <p>Anlor sit amet, consectetur adipiscing elit. Fusce condimentum est lacus, non pretium risus
+                            lacinia vel. Fusce eget turpis orci.</p>
+                    </div>
+                    <div class="viewcontent__action">
+                        <span>Qty</span>
+                        <span><input type="number" placeholder="1"></span>
+                        <span><a href="#">add to cart</a></span>
+                        <span><i class="fal fa-heart"></i></span>
+                        <span><i class="fal fa-info-circle"></i></span>
+                    </div>
+                    <div class="viewcontent__footer">
+                        <ul>
+                            <li>Category:</li>
+                            <li>SKU:</li>
+                            <li>Brand:</li>
+                        </ul>
+                        <ul>
+                            <li>Watches</li>
+                            <li>2584-MK63</li>
+                            <li>Brenda</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> --}}
+<!-- product popup -->
+<!-- popup area end -->

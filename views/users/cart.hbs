@@ -1,0 +1,137 @@
+<div class="f_cart_area pt-110 mb-100">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-8 col-lg-8 col-md-12">
+                <div class="cart_table">
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th scope="col">Item</th>
+                                <th scope="col">Title</th>
+                                <th scope="col">Price</th>
+                                <th scope="col">Quantity</th>
+                                <th scope="col">Sub total</th>
+                                <th scope="col"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each products}}
+                            <tr>
+                                <td>
+                                    <img style="width:70px;height:70px;" src="/product-images1/{{this.item}}.jpg"
+                                        alt="😢">
+                                </td>
+
+                                <td>{{this.product.prodName}}</td>
+
+                                <td>${{this.product.prodPrice}}</td>
+
+
+                                <td>
+                                    <button class="cart-item-count mr-3"
+                                        onclick="changeQuantity('{{this._id}}','{{this.product._id}}','{{../user._id}}',-1)">-</button>
+                                    <span id="{{this.product._id}}">{{this.quantity}}</span>
+                                    <button class="cart-item-count ml-3"
+                                        onclick="changeQuantity('{{this._id}}','{{this.product._id}}','{{../user._id}}',1)">+</button>
+                                </td>
+                                <td >
+                                    <div id="subTotal">
+                                    <span>{{this.productTotal}}</span>
+
+                                    </div>
+                                </td>
+                                <td>
+                                    <button class="btn btn-outline-danger"
+                                        onclick="removeCartProduct('{{this._id}}','{{this.product._id}}')">Remove</button>
+                                </td>
+                            </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+            <div class="col-xl-4 col-lg-4 col-md-12">
+                <div class="cart__acount">
+                    <h5>Cart totals</h5>
+                    <table>
+                        {{!-- <tr class="first-child">
+                            <td>Subtotal</td>
+                            <td>{{products.prodPrice}}</td>
+                        </tr> --}}
+                        <tr class="first-child lastchild">
+                            <td>Shipping</td>
+                            <td>Proceed to checkout and select the shipping address to calculate the shipping amount
+                            </td>
+                        </tr>
+                        <tr class="first-child">
+                            <td>Total</td>
+                            <td id="total">{{totalValue.total}}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <a href="/checkout"><input type="submit" value="procced to checkout"></a>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    function changeQuantity(cartId, proId, userId,count) {
+        let quantity = parseInt(document.getElementById(proId).innerHTML)
+        count = parseInt(count)
+        $.ajax({
+            url: '/changeProductQuantity',
+            data: {
+                user: userId,
+                cart: cartId,
+                product: proId,
+                count: count,
+                quantity: quantity
+            },
+            method: 'post',
+            success: (response) => {
+                console.log(response)
+                if (response.removeProduct) {
+                    alert("product removed from cart")
+                    location.reload()
+                } else {
+                    console.log(response)
+                    document.getElementById(proId).innerHTML = quantity + count
+                    document.getElementById('total').innerHTML = response.total.total
+                    document.getElementById('subTotal').innerHTML= response.subtotal.subtotal
+                }
+            }
+        })
+
+
+    }
+
+
+
+    function removeCartProduct(cartId, proId) {
+        console.log("hereeeeeeeeeeeeeeeeeeeee")
+        $.ajax({
+            url: '/removeProduct',
+            data: {
+                cart: cartId,
+                product: proId
+            },
+            method: 'post',
+            success(response) {
+                Swal.fire(
+                    'Deleted!',
+                    'Your file has been deleted.',
+                    'success'
+                )
+                location.reload()
+            }
+        })
+    }
+</script>

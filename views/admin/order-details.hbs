@@ -1,0 +1,271 @@
+{{!--
+
+<body>
+
+
+
+    <main id="main" class="main">
+
+        <div class="pagetitle">
+            <h1>Orders</h1>
+            <nav>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                    <li class="breadcrumb-item">Tables</li>
+                    <li class="breadcrumb-item active">Orders</li>
+                </ol>
+            </nav>
+        </div><!-- End Page Title -->
+
+        <section class="section">
+            <div class="row">
+                <div class="col-lg-12">
+
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Orders</h5>
+
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </section>
+
+    </main><!-- End #main -->
+
+
+
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+            class="bi bi-arrow-up-short"></i></a> --}}
+
+
+    <main id="main" class="main">
+        <div class="pagetitle">
+            <h1>Order Information</h1>
+            <nav>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/admin/dash">Home</a></li>
+                    <li class="breadcrumb-item"></li><a href="/admin/ViewOrders">View Orders/</a></li>
+                    <li class="breadcrumb-item active">Order Information <i class="bi bi-truck"></i></li>
+                </ol>
+            </nav>
+        </div><!-- End Page Title -->
+
+
+
+        <!-- Main Container  -->
+        <div class="main-container container">
+
+
+            <div class="row">
+                <!--Middle Part Start-->
+                <div id="content" class="col-sm-12">
+                    <h3 class="title"> </h3>
+
+                    <table class="table table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <td colspan="2" class="text-left">Order Details</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="width: 50%;" class="text-left"> <b>Order ID: #</b> {{order._id}}
+                                    <br>
+                                    <b>Date Added:</b> {{order.date}}
+                                </td>
+                                <td style="width: 50%;" class="text-left"> <b>Payment Method:</b>
+                                    {{order.paymentMethod}}
+                                    <br>
+                                    <b>Shipping Method:</b> Free Delivery <br>
+
+
+                                    {{!--
+                                    <h1>Cancelled</h1>
+                                    orderDetails.status 'Shipped
+                                    <h1>Shipped</h1>
+                                    --}}
+
+
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="table table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <td style="width: 50%; vertical-align: top;" class="text-left"><b>Shipping Address</b>
+                                </td>
+                              
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="text-left">{{order.deliveryAddress.Name}}
+                                    <br>{{order.deliveryAddress.HouseNo}}
+                                    <br>{{order.deliveryAddress.Street}}
+                                    <br>{{order.deliveryAddress.TownCity}} {{order.deliveryAddress.PostCode}}
+                                    <br>{{order.deliveryAddress.State}} {{order.deliveryAddress.Country}}
+                                </td>
+              
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <td class="text-left ">#</td>
+                                    <td class="text-left "><b>Product Name</b> </td>
+                                    <td class="text-left "><b>Image</b> </td>
+                                    <td class="text-left "><b>Brand </b> </td>
+                                    <td class="text-right "><b>Quantity</b></td>
+                                    <td class="text-right "><b>Price</b> </td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {{#each products}}
+                                <tr>
+                                    <td class="text-left create_index"></td>
+                                    <td class="text-left">{{this.product.prodName}} </td>
+                                    <td class="text-left "><img height="50"
+                                            src="/product-images1/{{this.product._id}}.jpg "></td>
+                                    <td class="text-left">{{this.product.prodBrand}} </td>
+                                    <td class="text-right">{{this.quantity}}</td>
+                                    <td class="text-right">{{this.product.prodPrice}}</td>
+                                </tr>
+                                {{/each}}
+                                <td class="text-right">
+                                    <select onchange="changeStatus('{{order._id}}',value)" name="orderstatus"
+                                        id="{{order.item}}" class="form-select" id="floatingSelect">
+                                        <option id="selected" selected value="{{order.orderStatus}}">
+                                            {{order.orderStatus}}</option>
+
+
+
+                                        {{#isEqual order.orderStatus 'placed'}}
+                                        <option id="shipped" value="Shipped">Shipped</option>
+                                        <option id="OnTheWay" value="On the Way">On the Way</option>
+                                        <option id="Delivered" value="Delivered">Delivered</option>
+                                        <option id="Cancelled" value="Cancelled">Cancelled</option>
+                                        {{/isEqual}}
+                                        {{#isEqual order.orderStatus 'Shipped'}}
+                                        <option id="OnTheWay" value="On the Way">On the Way</option>
+                                        <option id="Delivered" value="Delivered">Delivered</option>
+                                        <option id="Cancelled" value="Cancelled">Cancelled</option>
+                                        {{/isEqual}}
+                                        {{#isEqual order.orderStatus 'On the Way'}}
+                                        <option id="Delivered" value="Delivered">Delivered</option>
+                                        <option id="Cancelled" value="Cancelled">Cancelled</option>
+                                        {{/isEqual}}
+                                        {{#isEqual order.orderStatus 'Delivered'}}
+                                        {{/isEqual}}
+                                        {{#isEqual order.orderStatus 'Cancelled'}}
+                                        {{/isEqual}}
+                                        {{#isEqual order.orderStatus 'Returned'}}
+                                        {{/isEqual}}
+                                    </select>
+                                    </form>
+                                </td>
+                                <td class="text-right">{{order.product.offerPrice}}</td>
+                                <td class="text-right">{{order.productTotal}}</td>
+
+                                </tr>
+                                {{!-- <form action="/admin/order-statusChange?id={{order._id}}">
+                                    <td class="text-right">
+                                        <div class="col-md-12">
+                                            <select id="inputState" class="form-select">
+                                                <option selected value="{{order.orderStatus}}">{{order.orderStatus}}
+                                                </option>
+                                                <option>pending</option>
+                                                <option>placed</option>
+                                                <option>Shipped</option>
+                                                <option>Canceled</option>
+                                                <option>Returned</option>
+                                                <option>Delivered</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <button type="submit" class="btn-btn-primary">update</button>
+                                        </div>
+                                    </td>
+                                </form> --}}
+
+                            </tbody>
+
+                            <tfoot>
+                                <tr>
+                                    <td colspan="7"></td>
+
+
+                                    <td class="text-right"><b>Sub-Total</b>
+                                    </td>
+                                    <td class="text-right">{{order.subtotal}}</td>
+
+                                </tr>
+                                <tr>
+
+                                    <td colspan="7"></td>
+                                    <td class="text-right">Coupon Applied<b></b>
+                                    </td>
+                                    <td class="text-right">{{order.discount}} </td>
+
+                                </tr>
+                                <tr>
+
+                                    <td colspan="7"></td>
+                                    <td class="text-right">Shipping Charges<b></b>
+                                    </td>
+                                    <td class="text-right">0</td>
+
+                                </tr>
+
+                                <tr>
+
+                                    <td colspan="7"></td>
+                                    <td class="text-right"><b>Total</b>
+                                    </td>
+                                    <td class="text-right">{{order.total}}</td>
+
+                                </tr>
+
+                            </tfoot>
+                        </table>
+                    </div>
+
+
+
+
+                </div>
+                <!--Middle Part End-->
+
+            </div>
+        </div>
+        <!-- //Main Container -->
+
+
+
+
+    </main><!-- End #main -->
+
+
+    <script>
+        function changeStatus(orderId, updateSts) {
+            console.log(orderId)
+            $.ajax({
+                url: '/admin/changeOrderStatus',
+                method: 'post',
+                data: {
+                    order: orderId,
+                    status: updateSts
+                },
+
+                success: (response) => {
+                    location.reload()
+                    alert(response, 'status changed')
+                }
+            })
+        }
+    </script>

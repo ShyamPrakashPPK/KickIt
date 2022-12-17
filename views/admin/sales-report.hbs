@@ -1,0 +1,106 @@
+
+   <main id="main" class="main mr-10">
+    <div class="pagetitle">
+        <h1>Sales Report</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/admin/dash">Home</a></li>
+                <li class="breadcrumb-item active">Reports</li>
+                <li class="breadcrumb-item active">Sales Report</li>
+                <div class="float-right">
+
+
+                </div>
+
+            </ol>
+
+        </nav>
+        <div class="ps-10">
+          
+            <button class="btn btn-sm btn-danger " onclick="exportToPDF()">Export PDF <i
+                    class="bi bi-filetype-pdf"></i></button>
+        </div>
+
+    </div><!-- End Page Title -->
+
+    <section class="section dashboard" id="invoice">
+        <div class="row">
+
+            <!-- Left side columns -->
+            <div class="col-lg-12">
+                <div class="row">
+
+                   
+
+                    <!-- sales report -->
+                    <div class="col-12">
+                        <div class="card top-selling overflow-auto">
+                            <div class="filter">
+                                <form action="/admin/searchByDate" method="post">
+                                    <input type="date" name="fromDate" id=""> to
+                                    <input type="date" name="toDate" id="">
+                                    <button type="submit" class="btn btn-primary  btn-sm">Search by Date</button>
+                                </form>
+                            </div>
+
+                            <div class="card-body pb-0">
+                                <h5 class="card-title">Sales Report <span></span></h5>
+
+                                <table class="table table-borderless" id="myTable">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">#</th>
+                                            <th scope="col">Product</th>
+                                            <th scope="col">Sold Qty</th>
+                                            <th scope="col">Revenue</th>
+                                            <th scope="col">Profit/Loss</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {{#each salesReport}}
+                                        <tr>
+                                            <td class="create_index"></td>
+                                            <td><a href="#" class="text-primary fw-bold">{{this._id}}</a></td>
+                                            <td>{{this.SalesQty}}</td>
+                                            <td class="fw-bold"> <i class="bi bi-currency-rupee"></i> {{this.Revenue}}
+                                            </td>
+                                            <td> <i class="bi bi-currency-rupee"></i> {{this.profit}}</td>
+                                        </tr>
+                                        {{/each}}
+
+                                    </tbody>
+                                </table>
+
+                            </div>
+
+                        </div>
+                    </div><!-- End Sales Report -->
+        </div>
+    </section>
+
+
+
+</main><!-- End #main -->
+<script src="../assets/js/exportexcel.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
+
+<script>
+   
+    function exportToPDF() {
+        const element = document.getElementById('invoice');
+        element.style.width = '100%';
+        element.style.height = '900px';
+        let opt = {
+            margin: 10,
+            filename: 'KickIt.pdf',
+            image: { type: 'jpeg', quality: 1 },
+            html2canvas: { scale: 1 },
+            jsPDF: { unit: 'mm', orientation: 'landscape' }
+        }
+        html2pdf().set(opt)
+            .from(element)
+            .save();
+    }
+</script>
+
+

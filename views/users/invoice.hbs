@@ -1,0 +1,121 @@
+<div class="col-xl-3 float">
+
+    <button class="btn btn-light text-capitalize border-0" onclick="exportToPDF()">Download
+        Invoice<i class="fas fa-print text-primary"></i></button>
+</div>
+<div class="card" id="invoice">
+    <div class="card-body">
+        <div class="container mb-5 mt-3">
+            <div class="row d-flex align-items-baseline">
+                <div class="col-xl-9">
+                    <p style="color: #000000;font-size: 20px;">Invoice >> <strong>ID: {{fullOrder._id}}</strong></p>
+                </div>
+
+                <hr>
+            </div>
+
+            <div class="container">
+                <div class="col-md-12">
+                    <div class="text-center">
+                        <p class="pt-0">KICK IT</p>
+                    </div>
+
+                </div>
+
+
+                <div class="row">
+                    <div class="col-xl-8">
+                        <ul class="list-unstyled">
+                            <li class="text-muted">To: <span style="color:#5d9fc5 ;">{{fullOrder.deliveryAddress.Name}}</span></li>
+                            <li class="text-muted">{{fullOrder.deliveryAddress.HouseNo}}, {{fullOrder.deliveryAddress.Street}},{{fullOrder.deliveryAddress.TownCity}}</li>
+                            <li class="text-muted">{{fullOrder.deliveryAddress.State}}, {{fullOrder.deliveryAddress.Country}}</li>
+                            <li class="text-muted"><i class="fas fa-phone"></i> {{fullOrder.deliveryAddress.Mobile}}</li>
+                        </ul>
+                    </div>
+                    <div class="col-xl-4">
+                        <p class="text-muted">Invoice</p>
+                        <ul class="list-unstyled">
+                            <li class="text-muted"><i class="fas fa-circle" style="color:#ffbb00 ;"></i> <span
+                                    class="fw-bold">ID:</span>#{{fullOrder._id}}</li>
+                            <li class="text-muted"><i class="fas fa-circle" style="color:#ffbb00 ;"></i> <span
+                                    class="fw-bold">Creation Date: </span>{{fullOrder.date}}</li>
+                            <li class="text-muted"><i class="fas fa-circle" style="color:#ffbb00 ;"></i> <span
+                                    class="me-1 fw-bold">Status:</span><span
+                                    class="badge bg-warning text-black fw-bold">
+                                    {{fullOrder.status}}</span></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="row my-2 mx-1 justify-content-center">
+                    <table class="table table-striped table-borderless">
+                        <thead style="background-color:#ffbb00 ;" class="text-white">
+                            <tr>
+                                <th scope="col">Item</th>
+                                <th scope="col">Qty</th>
+                                <th scope="col">Unit Price</th>
+                                <th scope="col">Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each userOrder}}
+                            <tr>
+                                <td>{{this.product.prodName}}</td>
+                                <td>{{this.quantity}}</td>
+                                <td>{{this.product.prodPrice}}</td>
+                                <td>{{fullOrder.products.productTotal}}</td>
+                            </tr>
+                            {{/each}}
+                           
+                        </tbody>
+
+                    </table>
+                </div>
+                <div class="row">
+                    <div class="col-xl-8">
+                        <p class="ms-3"></p>
+
+                    </div>
+                    <div class="col-xl-3">
+                        <ul class="list-unstyled">
+                            <li class="text-muted ms-3"><span class="text-black me-4">SubTotal</span>{{fullOrder.subtotal}}</li>
+                            <li class="text-muted ms-3 mt-2"><span class="text-black me-4">Discount</span>{{fullOrder.discount}}</li>
+                        </ul>
+                        <p class="text-black float-start"><span class="text-black me-3"> Total Amount</span><span
+                                style="font-size: 25px;">{{fullOrder.total}}</span></p>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-xl-10">
+                        <p>Thank you for your purchase</p>
+                    </div>
+                  
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+  
+<script>
+        function exportToPDF() {
+                const element = document.getElementById('invoice');
+                element.style.width = '100%';
+                element.style.height = '900px';
+                let opt = {
+                    
+                    filename: 'KickIt.pdf',
+                    image: { type: 'jpeg', quality: 1 },
+                    html2canvas: { scale: 1 },
+                    jsPDF: { unit: 'mm', orientation: 'landscape' }
+                }
+                html2pdf().set(opt)
+                    .from(element)
+                    .save();
+            }
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"
+    integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>

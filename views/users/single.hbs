@@ -1,0 +1,374 @@
+<style>
+.mainimage1234{
+    width: 600px !important;
+    height: auto !important;
+}
+</style>
+
+
+<!-- single_breadcrumb_area start -->
+<div class="single_breadcrumb pt-25">
+    <div class="container">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item"><a href="#">Shop</a></li>
+                <li class="breadcrumb-item active" aria-current="page">{{product.prodName}}</li>
+            </ol>
+        </nav>
+
+     
+
+        <div class="row">
+            <div class="col-xl-6 col-lg-6 col-md-12">
+                <div class="row">
+                    <div class="col-xl-2 col-lg-2 col-md-2">
+                        <div class="single_product_tab">
+                            <div class="single_prodct">
+                                <ul class="nav nav-tabs justify-content-center mb-55" id="dfde" role="tablist">
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link active" id="home-tab" data-bs-toggle="tab"
+                                            data-bs-target="#homde" type="button" role="tab" aria-selected="true"><img
+                                                src="/product-images1/{{product._id}}.jpg" alt=""></button>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link" id="profile-tab" data-bs-toggle="tab"
+                                            data-bs-target="#profidfdle" type="button" role="tab"
+                                            aria-selected="false"><img src="/product-images2/{{product._id}}.jpg"
+                                                alt=""></button>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link" data-bs-toggle="tab" data-bs-target="#contadfdct"
+                                            type="button" role="tab" aria-selected="false"><img
+                                                src="/product-images3/{{product._id}}.jpg" alt=""></button>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                        <button class="nav-link" id="kids-tab" data-bs-toggle="tab"
+                                            data-bs-target="#kidsdfd" type="button" role="tab"
+                                            aria-selected="false"><img src="/product-images4/{{product._id}}.jpg"
+                                                alt=""></button>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-10 col-lg-10 col-md-10">
+                        <div class="single_preview_product">
+
+
+                            <div class="tab-content" id="myTabefContent">
+
+                                <div class="tab-pane fade show active " id="homde" role="tabpanel">
+                                    <div class="full-view" id="homd">
+                                        <img class="mainimage1234" src="/product-images1/{{product._id}}.jpg" alt="⛔">
+                                    </div>
+                                </div>
+
+                                <div class="tab-pane fade " id="profidfdle" role="tabpanel">
+                                    <div class="full-view" id="profidfdl" >
+                                        <img class="mainimage1234" src="/product-images2/{{product._id}}.jpg" alt="⛔">
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade " id="contadfdct" role="tabpanel">
+                                    <div class="full-view" id="contadfdc">
+                                        <img class="mainimage1234" src="/product-images3/{{product._id}}.jpg" alt="⛔">
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade " id="kidsdfd" role="tabpanel">
+                                    <div class="full-view" id="kidsdf">
+                                        <img class="mainimage1234" src="/product-images4/{{product._id}}.jpg" alt="⛔">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-6 col-lg-6 col-md-12">
+                <div class="single_preview_content pl-30">
+                    <h2 class="title-5 edit-title border-bottom-0">{{product.prodName}}</h2>
+                    <div class="s-product-review">
+
+                    </div>
+                    <div class="s-price pt-30 mb-30">
+                        <span>${{product.prodPrice}}</span>
+                    </div>
+                    <div class="s-des">
+                        <p>{{product.prodDescription}}</p>
+                    </div>
+                    <div class="viewcontent__action single_action pt-30" onclick="addToCart('{{product._id}}')">
+                        <span><a >+Add to Cart</button></a>
+                    </div>
+                    <div class="viewcontent__footer border-top-0 border-bottom pb-30">
+                        <ul>
+                            <li>Category:</li>
+                            <li>Brand:</li>
+                        </ul>
+                        <ul>
+                            <li>{{product.prodCategory}}</li>
+                            <li>{{product.prodBrand}}</li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<!-- single_breadcrumb_area end -->
+
+<div class="single_product_long_desc pt-50">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl 12 col-lg-12 col-md-12">
+                <div class="categories__tab single_disc_tab">
+
+                    <div class="tab-content" id="myTabCffontent">
+                        <div class="tab-pane fade show active" id="Description" role="tabpanel">
+
+                            <!-- categories area start -->
+                            <div class="categories_area pt-50 mb-100">
+                                <div class="container-fluid">
+                                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                                        <div class="section-wrapper text-center mb-35">
+                                            <h2 class="section-title">Related products </h2>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                                            <div class="categories__tab">
+                                                <div class="tab-content" id="dfmyTabContent">
+                                                    <div class="tab-pane fade show active" id="hoeerme" role="tabpanel">
+                                                        <div class="container">
+                                                            <div class="product-active swiper-container">
+                                                                <div class="swiper-wrapper">
+                                                                    {{#each allproducts}}
+                                                                    <div class="product-item swiper-slide">
+                                                                        <div class="product">
+                                                                            <div class="product__thumb">
+                                                                                <a href="/single?id={{this._id}}">
+                                                                                    <img class="product-primary"
+                                                                                        src="/product-images1/{{this._id}}.jpg"
+                                                                                        alt="😁">
+                                                                                    <img class="product-secondary"
+                                                                                        src="/product-images2/{{this._id}}.jpg"
+                                                                                        alt="product_image">
+                                                                                </a>
+                                                                                <div class="product__update">
+                                                                                    <a class="#">new</a>
+                                                                                </div>
+                                                                                <div class="product-info mb-10">
+                                                                                    <div class="product_category">
+                                                                                        <span>{{this.prodCategory}}</span>
+                                                                                    </div>
+                                                                                
+                                                                                </div>
+                                                                                <div class="product__name">
+                                                                                    <h4><a
+                                                                                            href="/single?id={{this._id}}">{{this.prodName}}</a>
+                                                                                    </h4>
+                                                                                    {{!-- <div class="pro-price">
+                                                                                        <p class="p-absoulute pr-1">
+                                                                                            <span>Offer Price</span>
+                                                                                            <span>$</span>{{this.prodPrice}}
+                                                                                            <a class="p-absoulute pr-2"
+                                                                                                href="/add-to-cart/{{this._id}}">add
+                                                                                                to cart</a>
+
+                                                                                            <button
+                                                                                                onclick="addToCart('{{this._id}}')"
+                                                                                                class="p-absoulute pr-2">Add
+                                                                                                to cart</button>
+                                                                                    </div> --}}
+                                                                                    <div class="pro-price">
+                                                                                        <p class="p-absoulute pr-1">
+                                                                                            <span>₹</span>{{this.prodPrice}}
+                                                                                            <span>₹</span><s>{{this.prodMRP}}</s>
+                                                                                        </p>
+                                                                                        <div onclick="addToCart('{{this._id}}')">
+                                                                                            <a class="p-absoulute pr-2" >add
+                                                                                                to
+                                                                                                cart</a>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="product__action">
+                                                                                    <div class="inner__action">
+                                                                                        <div class="wishlist">
+                                                                                            <a
+                                                                                                onclick="wishlist('{{this._id}}')"><i
+                                                                                                    class="fal fa-heart"></i></a>
+                                                                                        </div>
+                                                                                        <div class="view">
+                                                                                            <a
+                                                                                                ><i
+                                                                                                    class="fal fa-eye"></i></a>
+                                                                                        </div>
+                                                                                        <div class="layer">
+                                                                                            <a ><i
+                                                                                                    class="fal fa-layer-group"></i></a>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    {{/each}}
+
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- categories area end -->
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<script src="https://unpkg.com/js-image-zoom/js-image-zoom.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/js-image-zoom/js-image-zoom.min.js"></script>
+
+
+
+
+<script>
+
+
+    var options = {
+        width: 600, // required
+        zoomWidth: 600,
+        scale: 0.7,
+        offset: {
+            vertical: 50,
+            horizontal: -550
+        }
+    };
+    new ImageZoom(document.getElementById('homd'), options)
+
+    var options = {
+        width: 800, // required
+        zoomWidth: 600,
+        scale: 0.7,
+        offset: {
+            vertical: 50,
+            horizontal: -550
+        }
+    };
+    new ImageZoom(document.getElementById('profidfdl'), options)
+
+    var options = {
+        width: 800, // required
+        zoomWidth: 600,
+        scale: 0.7,
+        offset: {
+            vertical: 50,
+            horizontal: -550
+        }
+    };
+    new ImageZoom(document.getElementById('contadfdc'), options)
+
+      var options = {
+            width: 800, // required
+            zoomWidth: 600,
+            scale: 0.7,
+            offset: {
+                vertical: 50,
+                horizontal: -550
+            }
+        };
+        new ImageZoom(document.getElementById('kidsdf'), options)
+
+    function addToCart(proId) {
+        $.ajax({
+            url: '/add-to-cart/' + proId,
+            method: 'get',
+            success: (response) => {
+                if (response.status) {
+                    let count = $('#cart-count').html()
+                    count = parseInt(count) + 1
+                    $('#cart-count').html(count)
+
+                    Swal.fire({
+                        position: 'top-end',
+                        width: 300,
+                        height: 100,
+                        icon: 'success',
+                        text: "Item Added to Cart",
+                        showConfirmButton: false,
+                        timer: 1000
+                    })
+                } else {
+                    Swal.fire({
+                        title: 'Please Login ',
+                        text: "Please Login to Add this Item Into Your Cart",
+                        icon: 'info',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: 'Continue with Login'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            location.href = '/login'
+                        }
+                    })
+                }
+            }
+        })
+    }
+
+    function wishlist(productId) {
+        $.ajax({
+            url: '/add-to-wishlist/' + productId,
+            method: 'get',
+            success: (response) => {
+                if (response.status) {
+
+
+                    Swal.fire({
+                        position: 'top-end',
+                        width: 300,
+                        height: 100,
+                        icon: 'success',
+                        text: "Item Added to wishlist",
+                        showConfirmButton: false,
+                        timer: 1000
+                    })
+                } else {
+                    Swal.fire({
+                        title: 'Please Login ',
+                        text: "Please Login to Add this Item Into Your Wishlist",
+                        icon: 'info',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: 'Continue with Login'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            location.href = '/login'
+                        }
+                    })
+                }
+            }
+        })
+    }
+</script>

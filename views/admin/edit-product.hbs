@@ -1,0 +1,343 @@
+{{!-- <body>
+
+    <main id="main" class="main">
+
+        <div class="pagetitle">
+            <h1>Form Layouts</h1>
+            <nav>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index">Home</a></li>
+                    <li class="breadcrumb-item">Product</li>
+                    <li class="breadcrumb-item active">All Product</li>
+                    <li class="breadcrumb-item active">Edit Product</li>
+
+                </ol>
+            </nav>
+        </div><!-- End Page Title -->
+        <section class="section">
+            <div class="row">
+                <div class="col-lg-12">
+
+
+
+
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Edit product</h5>
+
+
+
+                            <form class="row g-3" action="/admin/edit-product/{{product._id}}" method="post"
+                                enctype="multipart/form-data">
+                                <div class="col-md-12">
+                                    <div class="form-floating">
+                                        <input name="prodName" type="text" class="form-control" id="floatingName"
+                                            placeholder="Name of the product to be added"
+                                            value="{{product.prodName}}">
+                                        <label for="floatingName">Product name</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-floating">
+                                        <input name="prodMRP" type="text" class="form-control" id="floatingEmail"
+                                            placeholder="Price for lowest size here" value="{{product.prodMRP}}">
+                                        <label for="floatingEmail">MRP</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-floating">
+                                        <input name="prodPrice" type="text" class="form-control" id="floatingEmail"
+                                            placeholder="Price for lowest size here" value="{{product.prodPrice}}">
+                                        <label for="floatingEmail">Selling Price</label>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-3">
+                                    <div class="form-floating">
+                                        <input name="prodStock" type="text" class="form-control" id="floatingEmail"
+                                            placeholder="Price for lowest size here" value="{{product.prodStock}}">
+                                        <label for="floatingEmail">Stock</label>
+                                    </div>
+                                </div>
+                                {{!-- <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <input name="Price2" type="text" class="form-control" id="floatingPassword"
+                                            placeholder="Price for the highest size" value="{{product.Price2}}">
+                                        <label for="floatingPassword">Price2</label>
+                                    </div>
+                                </div> 
+                                <div class="col-12">
+                                    <div class="form-floating">
+                                        <input name="prodDescription" class="form-control"
+                                            value="{{product.prodDescription}}" id="floatingTextarea"
+                                            style="height: 100px;"></input>
+                                        <label for="floatingTextarea">Description</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-floating mb-3">
+                                        <select name="prodCategory" class="form-select" id="floatingSelect" aria-label="Category">
+                                            <option selected>{{product.prodCategory}}</option>
+                                            {{#each category}}
+                                            <option value="{{this.categoryName}}">{{this.categoryName}}</option>
+                                            {{/each}}
+                                        </select>
+                                        <label for="floatingSelect">Category</label>
+                                        </div>
+                                        
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-floating mb-3">
+                                                <select name="prodBrand" class="form-select" id="floatingSelect" aria-label="Brand">
+                                                    <option selected>{{product.prodBrand}}</option>
+                                                    {{#each brand}}
+                                                    <option value="{{this.brandName}}">{{this.brandName}}</option>
+                                                    {{/each}}
+                                                </select>
+                                                <label for="floatingSelect">Brand</label>
+                                    </div>
+                                </div>
+
+                                    <div class="row mb-3">
+                                        <label for="inputNumber" class="col-sm-2 col-form-label">Primary image</label>
+                                        <div class="col-sm-10">
+                                            <img src="/product-images1/{{product._id}}.jpg" alt=""
+                                                style="width: 100px;height:auto;" id="imgView">
+                                            <input name="image1" class="form-control" type="file" id="formFile"
+                                                onchange="viewImage(event)">
+                                        </div>
+                                    </div>
+                                    {{!-- <div class="row mb-3">
+                                        <label for="inputNumber" class="col-sm-2 col-form-label">Secondary image</label>
+                                        <div class="col-sm-10">
+                                            <input class="form-control" type="file" id="formFile">
+                                        </div>
+                                    </div> --}}
+                                    <div class="text-center">
+                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                        <button type="reset" class="btn btn-secondary">Reset</button>
+                                    </div>
+                            </form><!-- End floating Labels Form -->
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main><!-- End #main --> --}}
+
+
+
+
+
+    <body>
+    
+        <main id="main" class="main">
+    
+            <div class="pagetitle">
+                <h1>Add Product</h1>
+                <nav>
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="index">Home</a></li>
+                        <li class="breadcrumb-item">Product</li>
+                        <li class="breadcrumb-item active"> Product</li>
+                    </ol>
+                </nav>
+            </div><!-- End Page Title -->
+            <section class="section">
+                <div class="row">
+                    <div class="col-lg-12">
+    
+    
+    
+    
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Add New Product</h5>
+    
+    
+    
+                                <form class="row g-3 form-floating" action="/admin/edit-product/{{product._id}}" method="post"
+                                    enctype="multipart/form-data">
+                                    <div class="col-md-12">
+                                        <div class="form-floating">
+                                            <input name="prodName" type="text" class="form-control" required
+                                                id="floatingName" placeholder="Name of the product to be added" value="{{product.prodName}}">
+                                            <label for="floatingName" >Product name</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-floating mb-3">
+                                            <select onchange="getCategoryDiscount()" name="prodCategory" class="form-select"
+                                                required id="categorySelect" aria-label="Category" >
+                                                <option selected>{{product.prodCategory}}</option>
+                                                {{#each category}}
+                                                {{#unless categoryBlocked}}
+                                                <option value="{{this.categoryName}}">{{this.categoryName}}</option>
+                                                {{/unless}}
+                                                {{/each}}
+                                            </select>
+                                            <label for="categorySelect">Category</label>
+                                        </div>
+    
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="form-floating">
+    
+                                            <input name="categoryDiscount"  type="number" class="form-control"
+                                                id="categoryDiscount" placeholder="" readonly value="{{product.categoryDiscount}}">
+    
+                                            <label for="categoryDiscount"><i class="bi bi-percent"></i>Category </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-floating mb-3">
+                                            <select name="prodBrand" class="form-select" required id="floatingSelect"
+                                                aria-label="Brand" >
+                                                <option selected>{{product.prodBrand}}</option>
+                                                {{#each brand}}
+                                                {{#unless brandBlocked}}
+                                                <option value="{{this.brandName}}">{{this.brandName}}</option>
+                                                {{/unless}}
+                                                {{/each}}
+                                            </select>
+                                            <label for="floatingSelect">Brand</label>
+                                        </div>
+    
+                                    </div>
+    
+                                    <div class="col-md-3">
+                                        <div class="form-floating">
+                                            <input name="prodMRP" id="prodMRP" type="number" class="form-control" required
+                                                id="floatingEmail" placeholder="Price for lowest size here" value="{{product.prodMRP}}">
+                                            <label for="floatingEmail">MRP</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="form-floating">
+                                            <input onchange="getTotalDiscount()" type="number" name="productDiscount"
+                                                class="form-control" id="productDiscount" placeholder="City" value="{{product.productDiscount}}">
+                                            <label for="ProductDiscount"><i class="bi bi-percent"></i>Product</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-floating">
+                                            <input name="prodPrice" type="number" class="form-control" id="sellingPrice"
+                                                placeholder="City"  readonly value="{{product.prodPrice}}">
+                                            <label for="prodPrice"><i class="bi bi-currency-rupee"></i> Offer Price</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="form-floating">
+                                            <input name="totalDiscount" type="number" class="form-control"
+                                                id="totalDiscount" placeholder="City"  readonly value="{{product.totalDiscount}}">
+                                            <label for="floatingCity"><i class="bi bi-percent"></i>Total</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-floating">
+                                            <input name="prodStock" type="number" class="form-control" required
+                                                id="floatingEmail" placeholder="Price for lowest size here" value="{{product.prodStock}}">
+                                            <label for="floatingEmail">Available Quantity</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-floating">
+                                            <input name="prodDescription" class="form-control" required
+                                                placeholder="Product description" id="floatingTextarea" value="{{product.prodDescription}}"
+                                                style="height: 100px;"></input>
+                                            <label for="floatingTextarea">Description</label>
+                                        </div>
+                                    </div>
+    
+                                    <div class="row mb-3">
+                                        <label for="inputNumber" class="col-sm-2 col-form-label">Primary image</label>
+                                        <img src="/product-images1/{{product._id}}.jpg" alt="" style="width: 200px;height:auto;" id="imgView">
+                                        <div class="col-sm-10">
+                                            <input name="image1" class="form-control" type="file" id="formFile" 
+                                                accept="image/*" onchange="viewImage(event)">
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <label for="inputNumber" class="col-sm-2 col-form-label">Secondary image</label>
+                                        <img src="/product-images2/{{product._id}}.jpg" alt="" style="width: 200px;height:auto;" id="imgView">
+                                        <div class="col-sm-10">
+                                            <input name="image2" class="form-control" type="file" id="formFile" 
+                                                accept="image/*" onchange="viewImage(event)">
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <label for="inputNumber" class="col-sm-2 col-form-label">Image</label>
+                                        <img src="/product-images3/{{product._id}}.jpg" alt="" style="width: 200px;height:auto;" id="imgView">
+                                        <div class="col-sm-10">
+                                            <input name="image3" class="form-control" type="file" id="formFile" 
+                                                accept="image/*" onchange="viewImage(event)">   
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <label for="inputNumber" class="col-sm-2 col-form-label">Image</label>
+                                        <img src="/product-images4/{{product._id}}.jpg" alt="" style="width: 200px;height:auto;" id="imgView">
+                                        <div class="col-sm-10">
+                                            <input name="image4" class="form-control" type="file" id="formFile" 
+                                                accept="image/*" onchange="viewImage(event)" >
+                                        </div>
+                                    </div>
+                           
+                                    <div class="text-center">
+                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                        <button type="reset" class="btn btn-secondary">Reset</button>
+                                    </div>
+                                </form><!-- End floating Labels Form -->
+    
+                            </div>
+                        </div>
+    
+                    </div>
+                </div>
+            </section>
+    
+        </main>
+    
+    
+    
+        <script>
+
+            function getCategoryDiscount() {
+                let variableOne = document.getElementById('categorySelect')
+                let variableTwo = variableOne.options[variableOne.selectedIndex].text
+                if (variableTwo === "Select Any") {
+                    document.getElementById('categoryDiscount').value = "0"
+                } else {
+                    $.ajax({
+                        url: "/admin/getCategoryDiscount",
+                        data: {
+                            categoryName: variableTwo
+                        },
+                        method: 'get',
+                        success: (response) => {
+                            document.getElementById('categoryDiscount').value = response
+                        }
+                    })
+                }
+            }
+            function getTotalDiscount() {
+                let proDis = parseInt(document.getElementById('productDiscount').value)
+                console.log(proDis, "<-------product Discount")
+                let catDis = parseInt(document.getElementById('categoryDiscount').value)
+                console.log(catDis, "<-------category Discount")
+                let MRP = parseInt(document.getElementById('prodMRP').value)
+                console.log(MRP, "<-------MRP")
+                document.getElementById('totalDiscount').value = proDis + catDis
+                let Dis = (proDis + catDis) / 100
+                document.getElementById('sellingPrice').value = MRP - (MRP * Dis)
+            }
+
+        </script>
+
+    <script>
+        function viewImage(event) {
+            document.getElementById("imgView").src = URL.createObjectURL(event.target.files[0])
+        }
+    </script>

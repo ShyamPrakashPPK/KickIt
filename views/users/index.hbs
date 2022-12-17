@@ -1,0 +1,556 @@
+<div class="cart-offcanvas-overlay"></div>
+
+<!-- slider start -->
+<div class="slider-active swiper-container height">
+    <div class="swiper-wrapper">
+        {{#each showcase}}
+        <div class="swiper-slide slider-item" style="background-color: {{this.bgColor}};  ">
+            <div class="container ">
+                <div class="row">
+                    <div class="col-xl-12 col-md-12">
+                        <div class="slider_images">
+                            <img class="back" src="./showcase/shoe/{{this._id}}.jpg" alt="🥲">
+                            <img class="top" src="./showcase/title/{{this._id}}.jpg" alt="🥲">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+    <div class="swiper-pagination"></div>
+</div>
+<!-- slider end -->
+
+<!-- BANNER area start  -->
+<div class="features-area d-none d-md-block fix">
+    <div class="row g-0">
+        {{#each banner}}
+        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+            <div class="fetures">
+                <div class="fetures__thumb fix">
+                    <a href="/shop-list"><img style="height: 300px;width: 650px;;" src="/banners/{{this._id}}.jpg"
+                            alt="features1"></a>
+                </div>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+</div>
+<!-- BANNER area end  -->
+
+{{!-- TOP CATEGORY WISE --}}
+<!-- categories area start -->
+<div class="categories_area pt-85 mb-150">
+    <div class="container-fluid">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+            <div class="section-wrapper text-center mb-35">
+                <h2 class="section-title">Explore Our Bestsellers</h2>
+                <p>We are smashing the markets.. by being the users number 1 choice for sports shopping<br> come
+                    shop with us .</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                <div class="categories__tab">
+                    <ul class="nav nav-tabs justify-content-center mb-55" id="myTab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home"
+                                type="button" role="tab" aria-selected="true">All
+                                Shoes</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile"
+                                type="button" role="tab" aria-selected="false">Men’s</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact"
+                                type="button" role="tab" aria-selected="false">Women’s</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#kidss" type="button"
+                                role="tab" aria-selected="false">Kid' s</button>
+                        </li>
+                    </ul>
+                    <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane fade show active" id="home">
+                            <div class="container">
+                                <div class="product-active h-2-product-active swiper-container">
+                                    <div class="swiper-wrapper">
+                                        {{#each product}}
+                                        <div class="product-item swiper-slide wow fadeInUp" data-wow-duration="1s"
+                                            data-wow-delay="0.2s">
+                                            <div class="product">
+                                                <div class="product__thumb">
+                                                    <a href="/single?id={{this._id}}">
+                                                        <img class="product-primary"
+                                                            src="/product-images1/{{this._id}}.jpg" alt="😁">
+                                                        <img class="product-secondary"
+                                                            src="/product-images2/{{this._id}}.jpg" alt="product_image">
+                                                    </a>
+                                                    <div class="product__update">
+                                                        <a class="lightblueclr">{{this.totalDiscount}}%off</a>
+                                                    </div>
+                                                    <div class="product-info mb-10">
+                                                        <div class="product_category">
+                                                            <span>{{this.prodCategory}}</span>
+                                                        </div>
+                                                   
+                                                    </div>
+                                                    <div class="product__name">
+                                                        <h4><a href="/single?id={{this._id}}">{{this.prodName}}</a>
+                                                        </h4>
+                                                        {{!-- <div class="pro-price">
+                                                            <p class="p-absoulute pr-1">
+                                                                <span>Offer Price</span>
+                                                                <span>$</span>{{this.prodPrice}}
+                                                                <a class="p-absoulute pr-2"
+                                                                    href="/add-to-cart/{{this._id}}">add to cart</a>
+
+                                                                <button onclick="addToCart('{{this._id}}')"
+                                                                    class="p-absoulute pr-2">Add to cart</button>
+                                                        </div> --}}
+                                                        <div class="pro-price">
+                                                            <p class="p-absoulute pr-1"><span>₹</span>{{this.prodPrice}}
+                                                                <span>₹</span><s>{{this.prodMRP}}</s>
+                                                            </p>
+                                                            <div onclick="addToCart('{{this._id}}')">
+                                                                <a class="p-absoulute pr-2">add to
+                                                                    cart</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="product__action">
+                                                        <div class="inner__action">
+                                                            <div class="wishlist">
+                                                                <a onclick="wishlist('{{this._id}}')"><i
+                                                                        class="fal fa-heart"></i></a>
+                                                            </div>
+                                                            <div class="view">
+                                                                <a ><i
+                                                                        class="fal fa-eye"></i></a>
+                                                            </div>
+                                                            <div class="layer">
+                                                                <a><i class="fal fa-layer-group"></i></a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {{/each}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="profile">
+                            <div class="container">
+                                <div class="product-active swiper-container">
+                                    <div class="swiper-wrapper">
+
+                                        {{!-- mens category start here --}}
+                                        {{#each mens}}
+                                        <div class="product-item swiper-slide">
+                                            <div class="product">
+                                                <div class="product__thumb">
+                                                    <a href="/single?id={{this._id}}">
+                                                        <img class="product-primary"
+                                                            src="/product-images1/{{this._id}}.jpg" alt="😁">
+                                                        <img class="product-secondary"
+                                                            src="/product-images2/{{this._id}}.jpg" alt="product_image">
+                                                    </a>
+                                                    <div class="product__update">
+                                                        <a class="lightblueclr">{{this.totalDiscount}}%off</a>
+                                                    </div>
+                                                    <div class="product-info mb-10">
+                                                        <div class="product_category">
+                                                            <span>{{this.prodCategory}}</span>
+                                                        </div>
+                                                    
+                                                    </div>
+                                                    <div class="product__name">
+                                                        <h4><a href="/single?id={{this._id}}">{{this.prodName}}</a>
+                                                        </h4>
+                                                        {{!-- <div class="pro-price">
+                                                            <p class="p-absoulute pr-1">
+                                                                <span>Offer Price</span>
+                                                                <span>$</span>{{this.prodPrice}}
+                                                                <a class="p-absoulute pr-2"
+                                                                    href="/add-to-cart/{{this._id}}">add to cart</a>
+
+                                                                <button onclick="addToCart('{{this._id}}')"
+                                                                    class="p-absoulute pr-2">Add to cart</button>
+                                                        </div> --}}
+                                                        <div class="pro-price">
+                                                            <p class="p-absoulute pr-1"><span>₹</span>{{this.prodPrice}}
+                                                                <span>₹</span><s>{{this.prodMRP}}</s>
+                                                            </p>
+                                                            <div onclick="addToCart('{{this._id}}')">
+                                                                <a class="p-absoulute pr-2">add to
+                                                                    cart</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="product__action">
+                                                        <div class="inner__action">
+                                                            <div class="wishlist">
+                                                                <a onclick="wishlist('{{this._id}}')"><i
+                                                                        class="fal fa-heart"></i></a>
+                                                            </div>
+                                                            <div class="view">
+                                                                <a ><i
+                                                                        class="fal fa-eye"></i></a>
+                                                            </div>
+                                                            <div class="layer">
+                                                                <a ><i class="fal fa-layer-group"></i></a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {{/each}}
+                                        {{!-- mens category end here --}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="contact">
+                            <div class="container">
+                                <div class="product-active h-2-product-active swiper-container">
+                                    <div class="swiper-wrapper">
+                                        {{!-- womens category start here --}}
+                                        {{#each women}}
+                                        <div class="product-item swiper-slide">
+                                            <div class="product">
+                                                <div class="product__thumb">
+                                                    <a href="/single?id={{this._id}}">
+                                                        <img class="product-primary"
+                                                            src="/product-images1/{{this._id}}.jpg" alt="😁">
+                                                        <img class="product-secondary"
+                                                            src="/product-images2/{{this._id}}.jpg" alt="product_image">
+                                                    </a>
+                                                    <div class="product__update">
+                                                        <a class="lightblueclr">{{this.totalDiscount}}%off</a>
+                                                    </div>
+                                                    <div class="product-info mb-10">
+                                                        <div class="product_category">
+                                                            <span>{{this.prodCategory}}</span>
+                                                        </div>
+                                                    
+                                                    </div>
+                                                    <div class="product__name">
+                                                        <h4><a href="/single?id={{this._id}}">{{this.prodName}}</a>
+                                                        </h4>
+                                                        {{!-- <div class="pro-price">
+                                                            <p class="p-absoulute pr-1">
+                                                                <span>Offer Price</span>
+                                                                <span>$</span>{{this.prodPrice}}
+                                                                <a class="p-absoulute pr-2"
+                                                                    href="/add-to-cart/{{this._id}}">add to cart</a>
+
+                                                                <button onclick="addToCart('{{this._id}}')"
+                                                                    class="p-absoulute pr-2">Add to cart</button>
+                                                        </div> --}}
+                                                        <div class="pro-price">
+                                                            <p class="p-absoulute pr-1"><span>₹</span>{{this.prodPrice}}
+                                                                <span>₹</span><s>{{this.prodMRP}}</s>
+                                                            </p>
+                                                        <div onclick="addToCart('{{this._id}}')">
+                                                            <a class="p-absoulute pr-2">add to
+                                                                cart</a>
+                                                        </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="product__action">
+                                                        <div class="inner__action">
+                                                            <div class="wishlist">
+                                                                <a onclick="wishlist('{{this._id}}')"><i
+                                                                        class="fal fa-heart"></i></a>
+                                                            </div>
+                                                            <div class="view">
+                                                                <a><i
+                                                                        class="fal fa-eye"></i></a>
+                                                            </div>
+                                                            <div class="layer">
+                                                                <a><i class="fal fa-layer-group"></i></a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {{/each}}
+                                        {{!-- womens category end here --}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="kidss">
+                            <div class="container">
+                                <div class="product-active swiper-container">
+                                    <div class="swiper-wrapper">
+                                        {{#each kids}}
+                                        {{!-- kids category start here --}}
+                                        <div class="product-item swiper-slide">
+                                            <div class="product">
+                                                <div class="product__thumb">
+                                                    <a href="/single?id={{this._id}}">
+                                                        <img class="product-primary"
+                                                            src="/product-images1/{{this._id}}.jpg" alt="😁">
+                                                        <img class="product-secondary"
+                                                            src="/product-images2/{{this._id}}.jpg" alt="product_image">
+                                                    </a>
+                                                    <div class="product__update">
+                                                        <a class="lightblueclr">{{this.totalDiscount}}%off</a>
+                                                    </div>
+                                                    <div class="product-info mb-10">
+                                                        <div class="product_category">
+                                                            <span>{{this.prodCategory}}</span>
+                                                        </div>
+                                                    
+                                                    </div>
+                                                    <div class="product__name">
+                                                        <h4><a href="/single?id={{this._id}}">{{this.prodName}}</a>
+                                                        </h4>
+
+                                                        <div class="pro-price">
+                                                            <p class="p-absoulute pr-1"><span>₹</span>{{this.prodPrice}}
+                                                                <span>₹</span><s>{{this.prodMRP}}</s>
+                                                            </p>
+                                                            <div onclick="addToCart('{{this._id}}')">
+                                                                <a class="p-absoulute pr-2">add to
+                                                                    cart</a>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="product__action">
+                                                        <div class="inner__action">
+                                                            <div class="wishlist">
+                                                                <a onclick="wishlist('{{this._id}}')"><i
+                                                                        class="fal fa-heart"></i></a>
+                                                            </div>
+                                                            <div class="view">
+                                                                <a ><i
+                                                                        class="fal fa-eye"></i></a>
+                                                            </div>
+                                                            <div class="layer">
+                                                                <a ><i class="fal fa-layer-group"></i></a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {{/each}}
+                                        {{!-- kids category start here --}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- categories area end -->
+{{!-- CATEGORY END --}}
+
+<!-- product show case area start  -->
+{{#each showcasetwo}}
+<div  class="show-case lightblue pt-125" style="background-color: {{this.bgColor}};  ">
+    <div class="container">
+        <div class="row" >
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                <div class="section-wrapper text-center mb-35">
+                    <h4 class="sub-title">Bestseller products</h4>
+                    <h2 class="section-title text-white">{{this.sellerName}}</h2>
+                    <p class="d-none d-lg-block">{{this.sellerDescription}}
+
+                        <br> happy shopping😁</p>
+                </div>
+            </div>
+            <div class="case-info text-center" >
+                <span class="offer-text d-none d-lg-block">hot deal<i class="far fa-stars"></i></span>
+                <h2 class="back1-text d-none d-lg-block">{{this.bgtext1}}</h2>
+                <h2 class="back-text d-none d-lg-block">{{this.bgtext2}}</h2>
+                <a href="shop.html"><img class="banar-product" src="./secondshowcase/{{this._id}}.jpg" alt=""></a>
+            </div>
+        </div>
+    </div>
+</div>
+{{/each}}
+<!-- product show case area end  -->
+
+<!-- new product area start -->
+<div class="new_product_area mb-80">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                <div class="row">
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                        <div class="section-wrapper text-center mb-35">
+                            <h2 class="section-title"><a href="#">Explore Our New arrivals</a></h2>
+                            <p>Directly from the designers. Get the best of the latest designs here</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="product-active2 swiper-container">
+                        <div class="swiper-wrapper">
+                            {{#each oldprod}}
+                            <div class="product-item swiper-slide  wow fadeInLeft " data-wow-duration=".9s"
+                                data-wow-delay=".3s">
+                                <div class="product product-2">
+                                    <div class="product__thumb">
+                                        <a href="/single?id={{this._id}}">
+                                            <img class="product-primary" src="/product-images1/{{this._id}}.jpg"
+                                                alt="product_image">
+                                            <img class="product-secondary" src="/product-images2/{{this._id}}.jpg"
+                                                alt="product_image">
+                                        </a>
+                                        <!-- <div class="product__update">
+                                                    <a class="#">new</a>
+                                                </div> -->
+                                        <div class="product-info mb-10">
+                                            <div class="product_category">
+                                                <span>{{this.prodCategory}}</span>
+                                            </div>
+
+                                        </div>
+                                        <div class="product__name">
+                                            <h4><a href="/single?id={{this._id}}">{{this.prodName}}</a></h4>
+                                            <div class="pro-price">
+
+                                                <p class="p-absoulute pr-1"><span>₹</span>{{this.prodPrice}}
+                                                    <span>₹</span><s>{{this.prodMRP}}</s>
+                                                </p>
+                                                <div onclick="addToCart('{{this._id}}')">
+                                                    <a class="p-absoulute pr-2">add
+                                                        to
+                                                        cart</a>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="product__action">
+                                            <div class="inner__action">
+                                                <div class="wishlist">
+                                                    <a onclick="wishlist('{{this._id}}')"><i
+                                                            class="fal fa-heart"></i></a>
+
+                                                </div>
+                                                <div class="view">
+                                                    <a ><i class="fal fa-eye"></i></a>
+                                                </div>
+                                                <div class="layer">
+                                                    <a ><i class="fal fa-layer-group"></i></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {{/each}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 padding-left">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12"></div>
+                <div class="section-wrapper text-center mb-35">
+                    <h2 class="section-title">Explore Our featured</h2>
+                    <p> Featured and exclusive collection    <br> 
+                        </p>
+                </div>
+                <div class="row">
+                    <div class="product-active2 swiper-container">
+                        <div class="swiper-wrapper">
+                            {{#each product}}
+                            <div class="product-item swiper-slide  wow fadeInLeft " data-wow-duration=".9s" data-wow-delay=".3s">
+                                <div class="product product-2">
+                                    <div class="product__thumb">
+                                        <a href="/single?id={{this._id}}">
+                                            <img class="product-primary" src="/product-images1/{{this._id}}.jpg" alt="product_image">
+                                            <img class="product-secondary" src="/product-images2/{{this._id}}.jpg" alt="product_image">
+                                        </a>
+                                        <!-- <div class="product__update">
+                                                                                <a class="#">new</a>
+                                                                            </div> -->
+                                        <div class="product-info mb-10">
+                                            <div class="product_category">
+                                                <span>{{this.prodCategory}}</span>
+                                            </div>
+                            
+                                        </div>
+                                        <div class="product__name">
+                                            <h4><a href="/single?id={{this._id}}">{{this.prodName}}</a></h4>
+                                            <div class="pro-price">
+                            
+                                                <p class="p-absoulute pr-1"><span>₹</span>{{this.prodPrice}}
+                                                    <span>₹</span><s>{{this.prodMRP}}</s>
+                                                </p>
+                                                <div onclick="addToCart('{{this._id}}')">
+                                                    <a class="p-absoulute pr-2">add
+                                                        to
+                                                        cart</a>
+                                                </div>
+                            
+                                            </div>
+                                        </div>
+                                        <div class="product__action">
+                                            <div class="inner__action">
+                                                <div class="wishlist">
+                                                    <a onclick="wishlist('{{this._id}}')"><i class="fal fa-heart"></i></a>
+                            
+                                                </div>
+                                                <div class="view">
+                                                    <a ><i class="fal fa-eye"></i></a>
+                                                </div>
+                                                <div class="layer">
+                                                    <a ><i class="fal fa-layer-group"></i></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {{/each}}
+                    
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- new product area end -->
+
+
+<!-- gallary area start  -->
+<div class="categories_area pt-85 mb-150">
+    <div class="container-fluid">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+            <div class="section-wrapper text-center mb-35">
+                <h2 class="section-title">OUR BRANDS</h2>
+                <p>Brands that have partnered up with us</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="gallary_area mb-5 product-active2 swiper-container" >
+    {{#each brand}}
+    <div class="gallary__thumb swiper-wrapper"  >
+        <a href="/shop-list"><img style=" width:300px; " src="/brand-images/{{this._id}}.jpg" alt="gallaryImage"></a>
+    </div>
+    {{/each}}
+
+</div>
+<!-- gallary area end  -->
+
+<!-- popup area end -->
+</body>
+
+</html>

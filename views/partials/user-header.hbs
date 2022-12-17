@@ -1,0 +1,259 @@
+<!-- header area start -->
+<header class="header-area">
+    <div class="gota_top bg-soft d-none d-sm-block">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
+                 
+                </div>
+                <div class="col-xl-4 offset-xl-5 col-lg-6 col-md-6 col-sm-6 text-end">
+                    <div class="gota_right">
+                        <ul>
+
+
+                            {{#if user}}
+
+                            <li><a href="/wishlist">Wishlist</a></li>
+
+                            <li><a href="/cart">Cart</a></li>
+
+                            <li><a href="/my-account">Account</a></li>
+
+                            <li><a href="/logout">Logout</a></li>
+
+
+                            {{else}}
+                            <li><a href="login">Login & register</a></li>
+                            {{/if}}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="gota_bottom position-relative">
+        <div class="container-fluid">
+            <div class="row align-items-center">
+                <div class="col-xl-2 col-lg-2 col-md-4 col-sm-4 d-none d-sm-block">
+                    <div class="gota_search">
+                        <form class="search_form">
+                            <button class="search_action"><i class="fal fa-search d-sm-none d-md-block"></i></button>
+                            <input type="text" placeholder="search" />
+                        </form>
+                    </div>
+                </div>
+                <div class="col-xl-8 col-lg-8 col-md-4 col-sm-4">
+                    <div class="sidemenu sidemenu-1 d-lg-none d-md-block">
+                        <a class="open" href="#"><i class="fal fa-bars"></i></a>
+                    </div>
+                    <div class="main-menu">
+                        <nav id="mobile-menu">
+                            <ul>
+                                <li ><a href="/">Home </a>  </li>
+                                <li ><a href="/shop-list">Shop</a></li>
+                                
+                                <li><a class="d-none d-xl-block" href="/">
+                                        <img class="pl-50 pr-50" style="height:80px;width:auto;" src="./assets/img/logo/logo.png" alt="">
+                                    </a></li>
+                                {{!-- <li class="menu-item-has-children"><a href="blog-details.html">Blog</a>
+                                    <ul class="sub-menu">
+                                        <li><a href="blog-grid.html">Blog Grid</a></li>
+                                        <li><a href="blog-large.html">Blog large</a></li>
+                                        <li><a href="blog-left.html">Blog left</a></li>
+                                        <li><a href="blog-right.html">Blog Right</a></li>
+                                        <li><a href="blog-no-sidebar.html">Blog no sidebar</a></li>
+                                    </ul>
+                                </li> --}}
+                                <li ><a href="/about">About</a>
+                    
+                                </li>
+                                <li><a href="/contact">contact us </a></li>
+                            </ul>
+                        </nav>
+                    </div>
+
+                </div>
+
+                <div class="col-xl-2 col-lg-2 col-md-4 col-sm-4">
+                    <div class="gota_cart gotat_cart_1 text-end">
+                        <a href="javascript:void(0)">
+                            {{#if user}}
+                            {{user.userName}}
+                            {{/if}}
+
+
+                            <span class="counter" id="cart-count">
+                                {{cartCount}} </span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- header area end -->
+
+<div class="search_area">
+    <div class="search_close">
+        <span><i class="fal fa-times"></i></span>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-12">
+                <div class="search-wrapper text-center">
+                    <h2>search</h2>
+                    <div class="search-filtering pt-30">
+                        <div class="search_tab">
+                            <ul class="nav nav-tabs justify-content-center mb-55" id="myTab2" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link active" id="home-tab2" data-bs-toggle="tab"
+                                        data-bs-target="#home2" type="button" role="tab" aria-selected="true">All
+                                        categories</button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="profile-tab2" data-bs-toggle="tab"
+                                        data-bs-target="#profile2" type="button" role="tab"
+                                        aria-selected="false">Basketball</button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" data-bs-toggle="tab" data-bs-target="#contact2"
+                                        type="button" role="tab" aria-selected="false">Handbag</button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="sportswear-tab" data-bs-toggle="tab"
+                                        data-bs-target="#sportswear" type="button" role="tab"
+                                        aria-selected="false">Sportswear</button>
+                                </li>
+                            </ul>
+                            <div class="tab-content" id="myTabContent2">
+                                <div class="tab-pane fade show active" id="home2" role="tabpanel">
+
+                                </div>
+                                <div class="tab-pane fade" id="profile2" role="tabpanel">
+
+                                </div>
+                                <div class="tab-pane fade" id="contact2" role="tabpanel">
+
+                                </div>
+                                <div class="tab-pane fade" id="sportswear" role="tabpanel">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="main_search">
+                        <form action="#">
+                            <input type="text" name="search" placeholder="search products">
+                            <button class="m-search"><i class="fal fa-search d-sm-none d-md-block"></i></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="fix">
+    <div class="side-info">
+        <button class="side-info-close"><i class="fal fa-times"></i></button>
+        <div class="side-info-content">
+            <div class="mobile-menu"></div>
+            <div class="contact-infos mb-30">
+                
+        </div>
+    </div>
+</div>
+<div class="offcanvas-overlay"></div>
+
+
+
+<script>
+    
+        function search() {
+            let strings = document.getElementById('searchBox').value
+            console.log(strings);
+            $.ajax({
+                url: "/getSearch",
+                data: {
+                    searchKey: strings
+                },
+                method: 'get',
+                success: (response) => {
+                    if (response.length != 0) {
+                        document.getElementById("drop").innerHTML = ''
+                        for (i = 0; i < response.length; i++) {
+                            const div1 = document.getElementById("drop");
+                            const aTag = document.createElement('a');
+                            aTag.setAttribute('href', "/details/" + response[i]._id);
+                            aTag.innerText = response[i].title;
+                            div1.appendChild(aTag);
+                            const bTag = document.createElement('br');
+                            div1.appendChild(bTag);
+                        }
+
+                    } else {
+                        document.getElementById("drop").innerHTML = ''
+
+
+                    }
+                }
+            })
+
+        }
+        function search2() {
+            let searchKey = document.getElementById('searchBox').value
+            console.log(searchKey);
+            $.ajax({
+                url: "/viewAll",
+          
+                method: 'get',
+                success: (response) => {
+                    location.href = "/viewAll"
+                }
+            })
+
+        }
+</script>
+{{!-- 
+<!-- cart area start  -->
+<div class="cart__sidebar">
+    <div class="container">
+        <div class="cart__content">
+            <div class="cart-text">
+                <h3 class="mb-40">Shopping cart</h3>
+                <div class="add_cart_product">
+                    <div class="add_cart_product__thumb">
+                        <img src="./assets/img/product/29-3.jpg" alt="">
+                    </div>
+                    <div class="add_cart_product__content">
+                        <h5><a href="shop.html">Running 3-Stripes</a></h5>
+                        <p>1 × $66.00</p>
+                        <button class="cart_close"><i class="fal fa-times"></i></button>
+                    </div>
+                </div>
+                <div class="add_cart_product">
+                    <div class="add_cart_product__thumb">
+                        <img src="./assets/img/product/17.jpg" alt="">
+                    </div>
+                    <div class="add_cart_product__content">
+                        <h5><a href="shop.html">Buddy non Stripes</a></h5>
+                        <p>1 × $40.00</p>
+                        <button class="cart_close"><i class="fal fa-times"></i></button>
+                    </div>
+                </div>
+            </div>
+            <div class="cart-icon">
+                <i class="fal fa-times"></i>
+            </div>
+            <div class="cart-bottom">
+                <div class="cart-bottom__text">
+                    <span>Subtotal:</span>
+                    <span class="end">$121.00</span>
+                    <a href="cart.html">view cart</a>
+                    <a href="checkout.html">checkout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="cart-offcanvas-overlay"></div> --}}
+<!-- cart area end  -->

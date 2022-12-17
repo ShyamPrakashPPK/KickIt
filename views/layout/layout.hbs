@@ -1,0 +1,189 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Gota eCommerce HTML5 Template</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
+  <!-- Place favicon.ico in the root directory -->
+
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+  <!-- CSS only  bootstrap-->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
+  <!-- CSS here -->
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
+  <link rel="stylesheet" href="assets/css/animate.min.css">
+  <link rel="stylesheet" href="assets/css/magnific-popup.css">
+  <link rel="stylesheet" href="assets/css/fontawesome-all.min.css">
+  <link rel="stylesheet" href="assets/css/themify-icons.css">
+  <link rel="stylesheet" href="assets/css/futura-std-font.css">
+  <link rel="stylesheet" href="assets/css/meanmenu.css">
+  <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
+  <link rel="stylesheet" href="assets/css/slick.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="../..//public/assets/css/responsive.css">
+
+  <link href="https://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css" rel="stylesheet"
+    type="text/css">
+
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+
+  <!--Sweet alert-->
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+
+
+</head>
+
+
+<body>
+
+
+  {{>user-header}}
+
+  {{{body}}}
+
+  {{>user-footer}}
+
+  {{!-- add to cart --}}
+  <script>
+    function addToCart(proId) {
+      $.ajax({
+        url: '/add-to-cart/' + proId,
+        method: 'get',
+        success: (response) => {
+          if (response.status) {
+            let count = $('#cart-count').html()
+            count = parseInt(count) + 1
+            $('#cart-count').html(count)
+
+            Swal.fire({
+              position: 'top-end',
+              width: 300,
+              height: 100,
+              icon: 'success',
+              text: "Item Added to Cart",
+              showConfirmButton: false,
+              timer: 1000
+            })
+          } else {
+            Swal.fire({
+              title: 'Please Login ',
+              text: "Please Login to Add this Item Into Your Cart",
+              icon: 'info',
+              showCancelButton: true,
+              confirmButtonColor: '#3085d6',
+              cancelButtonColor: '#d33',
+              confirmButtonText: 'Continue with Login'
+            }).then((result) => {
+              if (result.isConfirmed) {
+                location.href = '/login'
+              }
+            })
+          }
+        }
+      })
+    }
+  </script>
+
+
+  {{!-- add to wishlist --}}
+  <script>
+    function wishlist(productId) {
+      $.ajax({
+        url: '/add-to-wishlist/' + productId,
+        method: 'get',
+        success: (response) => {
+          if (response.status) {
+
+
+            Swal.fire({
+              position: 'top-end',
+              width: 300,
+              height: 100,
+              icon: 'success',
+              text: "Item Added to wishlist",
+              showConfirmButton: false,
+              timer: 1000
+            })
+          } else {
+            Swal.fire({
+              title: 'Please Login ',
+              text: "Please Login to Add this Item Into Your Wishlist",
+              icon: 'info',
+              showCancelButton: true,
+              confirmButtonColor: '#3085d6',
+              cancelButtonColor: '#d33',
+              confirmButtonText: 'Continue with Login'
+            }).then((result) => {
+              if (result.isConfirmed) {
+                location.href = '/login'
+              }
+            })
+          }
+        }
+      })
+    }
+  </script>
+
+
+
+
+  <!-- JS here -->
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+  <script src="assets/js/vendor/modernizr-3.5.0.min.js"></script>
+  <script src="assets/js/vendor/jquery-1.12.4.min.js"></script>
+  <script src="assets/js/bootstrap.min.js"></script>
+  <script src="assets/js/owl.carousel.min.js"></script>
+  <script src="assets/js/isotope.pkgd.min.js"></script>
+  <script src="assets/js/one-page-nav-min.js"></script>
+  <script src="assets/js/slick.min.js"></script>
+  <script src="assets/js/jquery.meanmenu.min.js"></script>
+  <script src="assets/js/countdown.js"></script>
+  <script src="assets/js/ajax-form.js"></script>
+  <script src="assets/js/wow.min.js"></script>
+  <script src="assets/js/jquery.scrollUp.min.js"></script>
+  <script src="assets/js/imagesloaded.pkgd.min.js"></script>
+  <script src="assets/js/jquery.magnific-popup.min.js"></script>
+  <script src="assets/js/plugins.js"></script>
+  <script src="assets/js/swiper-bundle.min.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/login.js"></script>
+  <script src="assets/js/formvalidatiion.js"></script>
+
+  <script src="javascripts/validation.js"></script>
+  \
+  {{!--
+  <script src="/public/javascripts/extraScripts.js"></script> --}}
+
+  <!-- JavaScript Bundle with Popper   bootstrap-->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+    crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.js"
+    integrity="sha512-CX7sDOp7UTAq+i1FYIlf9Uo27x4os+kGeoT7rgwvY+4dmjqV0IuE/Bl5hVsjnQPQiTOhAX1O2r2j5bjsFBvv/A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <!--razor pay-->
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+
+
+
+</body>
+
+</html>
