@@ -3,7 +3,7 @@ const collection = require('../config/collections')
 const multer = require('multer')
 const objectId = require('mongodb').ObjectId
 module.exports = {
-    //________________SEATCH PRODUCT________________
+    //________________SEARCH PRODUCT________________
     getProductsBySearch: (searchData) => {
         console.log(searchData, "LLLLLLLLLLLLLLLLLLLLLL");
         return new Promise(async (resolve, reject) => {
@@ -17,6 +17,15 @@ module.exports = {
                 console.log(products);
                 resolve(products)
             }
+        })
+    },
+    //________________PRODUCTS BY CATEGORY___________
+    getCategoryProducts: (categoryId) => {
+        console.log(categoryId);
+        return new Promise(async (resolve, reject) => {
+            let products = await db.get().collection(collection.PRODUCT_COLLECTION).find({ category: objectId(categoryId) }).toArray()
+            response.products = products;
+            resolve(products)
         })
     },
     //________________ADD PRODUCTS__________________

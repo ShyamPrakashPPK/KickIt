@@ -155,24 +155,26 @@ module.exports = {
         let women = await productHelpers.getcategoryWomen()
         let kids = await productHelpers.getcategoryKids()
         let brand = await brandHelpers.getAllBrands()
-        let oldprod= await productHelpers.getoldProducts()
-        let showcasetwo= await bannerHelpers.getbestseller()
+        let oldprod = await productHelpers.getoldProducts()
+        let showcasetwo = await bannerHelpers.getbestseller()
         productHelpers.getAllProducts().then((product) => {
             bannerHelpers.getIndexBanner().then((banner) => {
                 bannerHelpers.getShowcase().then((showcase) => {
-                    res.render('users/index', { brand, mens, women, kids, showcasetwo,showcase, oldprod, product, user, banner, cartCount, layout: 'layout' });
+                    res.render('users/index', { brand, mens, women, kids, showcasetwo, showcase, oldprod, product, user, banner, cartCount, layout: 'layout' });
                 })
             })
         })
     },
 
 
-    
+
     /////////////////////////////////////////////////////////////////////////////////////////////
     //                                        SEARCH                                           //                    
     /////////////////////////////////////////////////////////////////////////////////////////////
 
     searchBar: async (req, res) => {
+        let search = req.query.searchKey
+        console.log(search, "vaaa paratham.........111111111111111111111111111111111111111111111111111111111.......");
         let response = await productHelpers.getProductsBySearch(req.query.searchKey)
         res.json(response)
     },
@@ -182,9 +184,18 @@ module.exports = {
     /////////////////////////////////////////////////////////////////////////////////////////////
 
     userShopList: async (req, res) => {
+        console.log("ivede njn9999999999999999999999999999999999999999");
         let categories = await categoryHelpers.getAllCategory()
         productHelpers.getAllProducts().then((product) => {
             res.render('users/shop-list', { product, categories, user: req.session.user })
+        })
+    },
+
+    userShopListByCategory: (req, res, next) =>{
+        console.log("inside the view all withgid");
+        productHelpers.getCategoryProducts(req.params.id).then((products) => {
+            req.session.productsTemp = products  // using this session in viewAll
+            res.redirect('/shop-list')
         })
     },
 
@@ -200,9 +211,9 @@ module.exports = {
             res.render('users/single', { product, allproducts, user: req.session.user, layout: 'layout' })
         })
     },
-    
 
-    
+
+
     /////////////////////////////////////////////////////////////////////////////////////////////
     //                                   CONTACT US                                            //                    
     /////////////////////////////////////////////////////////////////////////////////////////////
@@ -221,7 +232,7 @@ module.exports = {
     },
 
 
-    
+
     /////////////////////////////////////////////////////////////////////////////////////////////
     //                                   WISHLIST                                              //                    
     /////////////////////////////////////////////////////////////////////////////////////////////
@@ -427,7 +438,7 @@ module.exports = {
         let order = await userHelpers.getAllOrders(orderid)
         res.render('users/view-ordered-product', { user: req.session.user, order, layout: 'layout' })
     },
-    
+
     //VERIFY PAYMENT
     verifyPayment: (req, res) => {
         userHelpers.verifyPayment(req.body).then(() => {
@@ -438,9 +449,9 @@ module.exports = {
             res.json({ status: false, errMsg: 'failed' })
         })
     },
-   
-    
-    
+
+
+
     /////////////////////////////////////////////////////////////////////////////////////////////
     //                                   USER ACCOUNT                                          //                    
     /////////////////////////////////////////////////////////////////////////////////////////////

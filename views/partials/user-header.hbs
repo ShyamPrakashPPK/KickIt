@@ -109,41 +109,16 @@
                                         data-bs-target="#home2" type="button" role="tab" aria-selected="true">All
                                         categories</button>
                                 </li>
-                                <li class="nav-item" role="presentation">
-                                    <button class="nav-link" id="profile-tab2" data-bs-toggle="tab"
-                                        data-bs-target="#profile2" type="button" role="tab"
-                                        aria-selected="false">Basketball</button>
-                                </li>
-                                <li class="nav-item" role="presentation">
-                                    <button class="nav-link" data-bs-toggle="tab" data-bs-target="#contact2"
-                                        type="button" role="tab" aria-selected="false">Handbag</button>
-                                </li>
-                                <li class="nav-item" role="presentation">
-                                    <button class="nav-link" id="sportswear-tab" data-bs-toggle="tab"
-                                        data-bs-target="#sportswear" type="button" role="tab"
-                                        aria-selected="false">Sportswear</button>
-                                </li>
+                              
+                                
                             </ul>
-                            <div class="tab-content" id="myTabContent2">
-                                <div class="tab-pane fade show active" id="home2" role="tabpanel">
-
-                                </div>
-                                <div class="tab-pane fade" id="profile2" role="tabpanel">
-
-                                </div>
-                                <div class="tab-pane fade" id="contact2" role="tabpanel">
-
-                                </div>
-                                <div class="tab-pane fade" id="sportswear" role="tabpanel">
-
-                                </div>
-                            </div>
+                            
                         </div>
                     </div>
                     <div class="main_search">
                         <form action="#">
-                            <input type="text" name="search" placeholder="search products">
-                            <button class="m-search"><i class="fal fa-search d-sm-none d-md-block"></i></button>
+                            <input id="searchBox" onkeyup="search()" type="text" name="search" placeholder="search products">
+                            <button   onclick="search2()" class="m-search"><i class="fal fa-search d-sm-none d-md-block"></i></button>
                         </form>
                     </div>
                 </div>
@@ -166,94 +141,4 @@
 
 
 
-<script>
-    
-        function search() {
-            let strings = document.getElementById('searchBox').value
-            console.log(strings);
-            $.ajax({
-                url: "/getSearch",
-                data: {
-                    searchKey: strings
-                },
-                method: 'get',
-                success: (response) => {
-                    if (response.length != 0) {
-                        document.getElementById("drop").innerHTML = ''
-                        for (i = 0; i < response.length; i++) {
-                            const div1 = document.getElementById("drop");
-                            const aTag = document.createElement('a');
-                            aTag.setAttribute('href', "/details/" + response[i]._id);
-                            aTag.innerText = response[i].title;
-                            div1.appendChild(aTag);
-                            const bTag = document.createElement('br');
-                            div1.appendChild(bTag);
-                        }
 
-                    } else {
-                        document.getElementById("drop").innerHTML = ''
-
-
-                    }
-                }
-            })
-
-        }
-        function search2() {
-            let searchKey = document.getElementById('searchBox').value
-            console.log(searchKey);
-            $.ajax({
-                url: "/viewAll",
-          
-                method: 'get',
-                success: (response) => {
-                    location.href = "/viewAll"
-                }
-            })
-
-        }
-</script>
-{{!-- 
-<!-- cart area start  -->
-<div class="cart__sidebar">
-    <div class="container">
-        <div class="cart__content">
-            <div class="cart-text">
-                <h3 class="mb-40">Shopping cart</h3>
-                <div class="add_cart_product">
-                    <div class="add_cart_product__thumb">
-                        <img src="./assets/img/product/29-3.jpg" alt="">
-                    </div>
-                    <div class="add_cart_product__content">
-                        <h5><a href="shop.html">Running 3-Stripes</a></h5>
-                        <p>1 × $66.00</p>
-                        <button class="cart_close"><i class="fal fa-times"></i></button>
-                    </div>
-                </div>
-                <div class="add_cart_product">
-                    <div class="add_cart_product__thumb">
-                        <img src="./assets/img/product/17.jpg" alt="">
-                    </div>
-                    <div class="add_cart_product__content">
-                        <h5><a href="shop.html">Buddy non Stripes</a></h5>
-                        <p>1 × $40.00</p>
-                        <button class="cart_close"><i class="fal fa-times"></i></button>
-                    </div>
-                </div>
-            </div>
-            <div class="cart-icon">
-                <i class="fal fa-times"></i>
-            </div>
-            <div class="cart-bottom">
-                <div class="cart-bottom__text">
-                    <span>Subtotal:</span>
-                    <span class="end">$121.00</span>
-                    <a href="cart.html">view cart</a>
-                    <a href="checkout.html">checkout</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="cart-offcanvas-overlay"></div> --}}
-<!-- cart area end  -->

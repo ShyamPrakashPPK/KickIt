@@ -1,4 +1,3 @@
-const client = require("twilio")(SID, TOKEN);
 const env = require('dotenv').config()
 
 
@@ -8,6 +7,8 @@ const SID = process.env.twilio_sid;
 const TOKEN = process.env.twilio_token;            //id regiisterd with phone number 9446791982
 const serviceID = process.env.twilio_service_id;
 ///////////////////////////////////////////////////////////
+const client = require("twilio")(SID, TOKEN);
+
 
 var mobileNumber
 
