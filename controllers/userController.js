@@ -10,6 +10,8 @@ const bannerHelpers = require('../helpers/banner-helpers');
 const paypal = require('paypal-rest-sdk');
 const categoryHelpers = require('../helpers/category-helpers');
 const brandHelpers = require('../helpers/brand-helpers');
+const env = require('dotenv').config()
+
 paypal.configure({
     'mode': 'sandbox', //sandbox or live
     'client_id': process.env.paypal_client_id,
