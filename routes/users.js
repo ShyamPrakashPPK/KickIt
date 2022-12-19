@@ -11,7 +11,7 @@ const { verifyLogin, userIndex, userShopList, userSingleProduct, getUserSignUp, 
 //--main pages----
 router.get('/', userIndex)
 router.get('/shop-list', userShopList)
-router.get('/shop-list/:id', userShopListByCategory)
+router.get('/shop-listt/:id', userShopListByCategory)
 router.get('/single/', userSingleProduct)
 router.get('/contact', getcontactUs)
 router.get('/about', getAboutUs)
@@ -58,13 +58,13 @@ router.get('/my-account', verifyLogin, userAccount)
 //-----Address-----
 router.get('/add-address', verifyLogin, addNewAddress)
 router.post('/postAddress', verifyLogin, postNewAddress)
-router.get('/removeAddress/:id', deleteAddress)
+router.get('/removeAddress/:id', verifyLogin, deleteAddress)
 
 //-----Order-----
 router.get('/order-details/', verifyLogin, userOrderDetails)
-router.post('/cancelOrder', userCancelOrder)
-router.post('/returnOrder', userReturnOrder)
-router.get('/invoice', getInvoice)
+router.post('/cancelOrder', verifyLogin, userCancelOrder)
+router.post('/returnOrder', verifyLogin, userReturnOrder)
+router.get('/invoice', verifyLogin, getInvoice)
 
 
 
