@@ -184,7 +184,6 @@ module.exports = {
     /////////////////////////////////////////////////////////////////////////////////////////////
 
     userShopList: async (req, res) => {
-        console.log("ivede njn9999999999999999999999999999999999999999");
         let categories = await categoryHelpers.getAllCategory()
         productHelpers.getAllProducts().then((product) => {
             res.render('users/shop-list', { product, categories, user: req.session.user })
